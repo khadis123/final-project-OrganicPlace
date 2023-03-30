@@ -26,8 +26,8 @@ express()
 //   .get("/getItem/:_id", getItem)
 //   .get("/getItems/:category", getItemsByCategory)
 
-//   .get("/companies", getCompanies)
-//   .get("/companies/:_id", getCompany)
+//   .get("/companies", getUsers)
+//   .get("/companies/:_id", getUser)
 
 //   .get("/cart", getCart)
 

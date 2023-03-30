@@ -10,8 +10,8 @@ const Header = () => {
       </header>
 
       <header>
-        <StyledLink to="/">Login</StyledLink>
-        <StyledLink to="/about">SignUp</StyledLink>
+        <StyledLink to="/login">Login</StyledLink>
+        <StyledLink to="/signup">SignUp</StyledLink>
       </header>
     </Wrapper>
   );

@@ -2,22 +2,24 @@ import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 // Item component which renders a single item/product 
-const Item = ({ item }) => {
+const ItemCard = ({ itemcard }) => {
   //If the item is out of stock, renders a small text with button "out of stock"
-  const outOfStock = item.numInStock === 0;
+  const outOfStock = itemcard.numInStock === 0;
   return (
     <Wrapper>
       <Product to={`/items/${item._id}`}>
-        <Img src={item.imageSrc} />
+        <Img src={itemcard.imageSrc} />
         <Naming>
-          <Name>{item.name}</Name>
-          <Price>{item.price}</Price>
+          <Name>{itemcard.name}</Name>
+          <Price>{itemcard.price}</Price>
           {outOfStock && <OutOfStockBtn>Out of Stock</OutOfStockBtn>}
         </Naming>
       </Product>
     </Wrapper>
   );
 };
+
+export default ItemCard;
 
 const OutOfStockBtn = styled.button`
   color: red;
@@ -73,4 +75,3 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-export default Item;
