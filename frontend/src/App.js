@@ -7,6 +7,7 @@ import
 function App() {
   return (
     <>
+    <>Some comments for testing</>
       <GlobalStyles />
       <div>This is my app</div>
     </>
