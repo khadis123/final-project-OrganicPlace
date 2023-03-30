@@ -18,6 +18,29 @@ express()
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
-  // add extra endpoints here 
 
+  // add extra endpoints here 
+  /*********************************************************/
+
+//   .get("/getItems", getItems)
+//   .get("/getItem/:_id", getItem)
+//   .get("/getItems/:category", getItemsByCategory)
+
+//   .get("/companies", getCompanies)
+//   .get("/companies/:_id", getCompany)
+
+//   .get("/cart", getCart)
+
+//   .get("/confirmation/:orderId", getOrder)
+
+//   .post("/add-item", addCart)
+//   .patch("/update-cart", updateCart)
+
+//   .post("/confirmation", confirmOrder)
+
+//   .delete("/delete-item/:_id", deleteItem)
+//   .delete("/delete-cart", deleteCart)
+
+
+  /*********************************************************/
   .listen(8050, () => console.info(`Listening on port 8050`));
