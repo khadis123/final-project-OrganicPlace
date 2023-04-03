@@ -7,7 +7,7 @@ const ItemCard = ({ itemcard }) => {
   const outOfStock = itemcard.numInStock === 0;
   return (
     <Wrapper>
-      <Product to={`/items/${item._id}`}>
+      <Product to={`/items/${itemcard._id}`}>
         <Img src={itemcard.imageSrc} />
         <Naming>
           <Name>{itemcard.name}</Name>

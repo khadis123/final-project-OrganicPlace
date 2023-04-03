@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { CgShoppingCart } from "react-icons/cg";
 
 
 const Header = () => {
@@ -9,7 +10,12 @@ const Header = () => {
         <StyledLogoLink to="/">OrganicPlace</StyledLogoLink>
       </header>
 
-      <header>
+      <header>          <HeaderCartButton >
+            <CgShoppingCart />
+            { (
+              <Number>{}</Number>
+            )}
+          </HeaderCartButton>
         <StyledLink to="/login">Login</StyledLink>
         <StyledLink to="/signup">SignUp</StyledLink>
       </header>
@@ -24,21 +30,60 @@ background-color: white;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-padding: 20px 60px; 
+align-items: center;
+padding: 20px 0px; 
 font-family: 'Montserrat', sans-serif;
 `;
 
 
 const StyledLink = styled(Link)`
-color: blue;
+color: #51AF5B;
 text-decoration: none;
 margin: 1rem;
 `; 
 
 const StyledLogoLink = styled(Link)`
-color: black;
+color: #51AF5B;
 text-decoration: none;
 font-size: 36px;
 font-weight: 700;
-margin: 1rem;
+/* margin: 1rem; */
+font-style: italic;
 `; 
+
+const HeaderCartButton = styled.a`
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #51AF5B;
+  cursor: pointer;
+  margin-left: 30px;
+  flex-grow: 0;
+
+  @media (max-width: 1400px) {
+    font-size: 25px;
+  }
+`;
+
+const Number = styled.span`
+  position: relative;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 10px;
+  top: -20px;
+  right: 5px;
+  font-size: 20px;
+  color: #51AF5B;
+
+  @media (max-width: 1400px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
+
+// --color-accent: #51AF5B;
+// --color-secondary: #B3E55E;
+// --color-third-golden: #FFCB3C;

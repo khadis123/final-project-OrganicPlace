@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
     --color-main-background: #fff;
-    --color-accent: #51AF5B;
+    --color-main: #51AF5B;
     --color-secondary: #B3E55E;
     --color-third-golden: #FFCB3C;
     --font-heading: 'Montserrat', 'Lora', sans-serif;
@@ -89,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     font-weight: bold;
     padding: 12px 50px;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     border: 1px black solid;
 

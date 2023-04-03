@@ -1,368 +1,44 @@
 [
   {
-    "name": "Barska",
-    "url": "http://www.barska.com/",
-    "country": "United States",
-    "_id": 19962
+    "_id": "first_user1@email.com",
+    "firstName": "First",
+    "lastName": "User1",
+    "email": "first_user1@email.com",
+    "phoneNumber": "4152394521",
+    "address": "1550 De Maisonneuve Blvd W, Montréal, QC, H3G 1M8, Canada",
+    "userAvatar": "data:image/jpeg;base64,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",
+    "cart": [
+      { "itemId": "6555", "quantity": 5 },
+      { "itemId": "6245", "quantity": 7 }
+    ]
   },
+
   {
-    "name": "Belkin",
-    "url": "http://www.belkin.com/",
-    "country": "United States",
-    "_id": 16384
+    "_id": "second_user2@email.com",
+    "firstName": "Second",
+    "lastName": "User2",
+    "email": "second_user2@email.com",
+    "phoneNumber": "4152394522",
+    "address": "1023 Guy Street, Montréal, QC, H3H 2N8, Canada",
+    "userAvatar": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALQAtAMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAAAgMEBQYBB//EAD8QAAIBAwMCBAMFBgMHBQAAAAECAwAEEQUSITFBBhNRYQcicRQygZGhI0JSYrHwgsHRFRYzkqLC4SQlQ2Oy/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAfEQEBAQEAAwEBAAMAAAAAAAAAARECEiExQQMTUWH/2gAMAwEAAhEDEQA/APcaKKKAooooCiuE4qPJNu+WP8WoHGlwdq8nufSkFVb73zH3pKjPyjt1PpTqqFHFAlVZenI9DzXeO4pVcNBzYDSfLpWO9GT2NA2UNJ+YdzTpLe1Nu53Y2np2qIBMw75+tLFx6rTJY90b9KbLrjOfxp7L6TVnU+1KEiH94VTfbQ2drA4JU47EcEV1rhiM5rfjWP8AJF1XapYb54mGTuT0q3jdXVWU5BGQalmNc9Touiiio0KKKKAooooCiikSttjY+gNAxPLn5V70jIRcdDjJPoK5EMLvbnFM3UpQEDmQ+ndv/FakZtyOm7O7YnGOoAzj60tbphwcEfkaiy3unaV5MF9e2sU82donmVC574BPNSx5cg37VYHoy9Pzq3GNv+yxcp+8Co96dWRH+6wP0NRfITqjFTVff3LWjcW09wAQCYggwScAZZlyTkcDJqZF8qvPpQB61T2V+LmETQO5TJUhgQVIOCrKeQQeoqYl03fB/SnivmmkU3KMbT70hblT1DD3xxTpIdMjkHH9amNbKZflagzjqR1qxkGBUGcdqsZvxU29otrLeyoSRcziZl9DtVTj/lzRfOp2mMMoC4OT1NTowPNXcMrnkY61y+jtTCzR5Rx0XsavV945Tn1arbeclsE81otJk3RFP4TkfQ1kxxOKura7+yftSMggAirffKcXOmhFdqHa6hFcR71yF9al1zel2iiigKKKKAqNdMThAevJ+lSCcVDB3M0pH0oOscdB93oP5qr4Lm2a+EbTJ52P2cW4bjwecfgak3TEKEU/MePqTVNq9jBpUd3qsk+IIB9qeLYvzSKqgfN12kxpwO6jnHFbjnfbE+IZ1vtd1fVZLf7VBbzx2SqyqVEMOZLggt8oyokGT3xVHBqNpp9qt2gm09zEzQwaTdyCSSRXZGUxH5P3JG74C98isT4n1i/stbSG0vZ7ae1gWOdoZSN0zEyS5x1+dyOfSrGz13xfFpQ1K40eHUtMnk+0Ge409WVnjbl2eMBuCuCWPas61J69vXPtPijTLtLRdRt9QdkdxFd22GIUqDl48AcsvUc/hUeXxFeXSpLcabcxxzqkjGy2XtvMBgq207W6AdOoHOawsfxTtb66a41CDUdPuHtTbO9hIkqMpyc7JAGByxOVYHgZJwBWnk8R+FfEWn2+k6Zrdrp0PnIZEljaBlRckKmQFyXCdG6Zq6mNhoPiPw9HBFY2+qxrLyRHdjyHP+FgPpx6Vox5cihtoIPRh0P415g9rrS6LPLe2cOoTy3yrAGkElutrHCGdi4HG7Y43EZLEcVUz3tpo8tmsUNzp11NbxzXAs7pokidwCIwuGBIBGc4ySMexMr2T7OjfcdlNKtQ6oysawfg7X9U1DULeJb9r2zZyrm5t0WVRtYqwZDtP3ehGcEZxW/iJKtn3paSezkv3ajRxCSQ56LUiXpTVueZB7Ui1Xx+YGExj2qWO3JHIoluYzkSIDTrvugiA7KOlV9zjGB1rVjluGZreGWTfGxUjsOhp0WjTxeW5wmRuOecA5xUKM/O1SoHOTyauM6lXNyI4/KiAVVXGB2q+gBESZ67RWWdS2R1J4A9a1UYIVQeoFZ6mOv87tpdFFFYdRRRRQMXTYjx3Y4pofKQOwG7/T+/alTHfOB6Cm3OFZj0J/Qf2asSm4hvuSx5WMfrWX+JF9Hb6PFBMf2c82+Yf/VEPNfP12hfxrVW4224J+85ya8c+N2q4FxAjtwkdouD0Zj5kn6Kg/xVdYeNXNzJdXU91cEGWaRpHP8AMxyf1r2HxLcXHh34NadYzyE3d7FHbnAC7UbMpGB6LhT65ry/wnpR1zxLpum7SyT3CiXB6Rg5c/goNbT456sLrxBaaYh+Syh3uo7PJhv/AMBPzqNoHgLW/CGnaZPY+KNJFzNLPvW5a2WUIm0AKDkMOdxOPWtXc/D/AMG67os2q+Hbm4tYljkdZdzeSCoJORIM44554rC/D7wdceKtVAcPHpkDA3M46n0jX1Y/oOfY6n4o+MLe2tv91PDpWK2hXybpofuhRx5KnuP4j3PHrkIun/DfxbZ6ZaajoWrCCW5hSYwx3D27ruAIGR8p4PXIqBres+LtGnjHizTo7ozDAluUz5yjjG+MgPwTw2evINaPQPBevLo9rf8AhbxmEkkhR5rcyExIxHzDKlhx05XtS/jHqUQ8P6ZodxcRXes+ZHLMYx90hCC2B93cx4GOlBpvhRNJf6FNqmn6XHC6mRYIpbn5ZnJG5iwT5fu44B7+pr0HRXu5dNik1O3S3vCn7aKOQOqtnHB7g9R9axtho8mj/DtLRLaWcx2BZUtkLyNMwwCEyu7Gd3Uc89cVvIgQmC248DPrRP12Y1B80xuSPSps3Q1WTHLVrmM9Itq5E00ZJJU7kX1U/wDnIpiQNMhkjEsZBIMcgww/D09xkVLMTTHyo5PLZhw+M4pJheJMTS+a/wDFjFa6+uMmRS+ZJHIwMTHPpU2wWe4fbHA+fcY/rSlT9oTVzo//AB39l/0q25E5524lWFktuu5sNKep9PpU2uCu1xt16pJPgooooooopMjbUZvQE0EQN87v6E/pTV1kRiPucLTsY/ZgepFRr2R1cNEhdlBYKBnPbp39cVpnpIndIoyX4SNcsfYDmvJpvCNj41tPt+qz3kMsk0k8ZgZQPnIxkFTn5VUdR0rW+JNVupfDd3FNbPa3VxItmqk8ktjcw9sE+tEO+0t7e0s4g0rLn5uEjQcFmI/IKOSfQAkGZ9eZXPwl1jTrgXXh7XYzKudm7dbyDPYMuR/TNY/xD4W8YQ3Ut9rWnX00shzJcDE+eOpZCRXuy2mozazLI+uTfZI7ZYmt4LdIx5xO7cCd2MLt4OTggZqXZNPb309s880yiKOeGSQjeASyspIAzym4H+YjtTGteML8SWsfCf8AsHRdJXTZ1XyzcJMWIB++2CAQ59T07VT+AdE0LWr65h8Q6oLCFYh5GJkjMkhYDqwIwBnj3FexeNYbae90O0fS9LvbjUL7yXN3bb3EIXc7KwIIwPfvWI8U+GPCEV3fw2GneIIEsABd3VlH9ot7diuQGDnJwOvNRV/4a+FsOjeIrPWrDWZLm2gYyJGIRl8qRjerYxyc8dOPeqLWktvFnxjs7Wx2SwWwjjmlToxjySfcBiB+FVF94Gn07y4dG8X6XKLuJZVge7+yPKrfd+UnByCOCc1r/gt4Sv8ASda1C61i0NvNHCqxKSG4bPII4wfY9jQewhVVAqgBQQAPYVIThV/OmgMsop3sfpiqzDFw2AarXbJqXdPxVeTzWuYx1TV3qA0yI3RtLq628GO2QM4BHXGen+tPW13FqlhDeW6yLHMm4LKhR19QwPQg8U9a8CRvYCo87NvySeetL9Z/HIoiCSasdH5klPsP7/Sq5GdRjPHvzUzS7mKB3WZwhfaFJ6Hr3q34nHrpd0VwV2uT0iiiigKYuziFvfAp+od63Re9WJQnCp9c/pVTrVs17DJbj7QEdQJHtpCkiqMn5SCDnIHSrZei/Q03H/xJTVZ6YO4ilbUNI0qa5ubkWccly73TZky7ERhuB0XParWwQvc6jKWX5rnyY3A5WONFUg59JPNI+tRjbXVpr+p319bSmOeQeVKiFl8sABckdO/WoF9q62NvLCLe5u4Ly8McMlliQxiYksHXIK7fm56HI5ByKqRbadIYtNa7v54wr77mSUrsCRkbhu5/dQAHpwK7ZB0t5r25hcXNwfNeNFJdUHEaAeoXBI/iLnvTjQSXEn/qgiwo3y2yHcCQeC574xkKOAepbjErzY4QZpm2xxgyOx7Ack0VnAkNz48tb+7uYYoLSxaGzguMwyGZ2xI4VwDjaQuRkVhJEvLmee2u7jXLXxDrWoiO/wBNjgKW01vvKnaQoyAnG7PPP1q6s9bvND+HUOo3Eyfatb1DdAl+7Sw26SNxkH91UUt/i79Km2982i6PLqU9/YXGnqFhs38NO8TSzsSAhiyYs4JONvHcVlqMzp8722n33iOTStC1HRr/AFIW4s51LXSRq2yNV7DAHT8a9i8M2kdtbSmONUQyGOJVGAscY2KAOw4P515zYW+lT69cSSaMtrrVognNvfWCpMxYgLIjxsI2+YjnZnJJrfWuq/YruDR0s/M2yfZVeKYEjagYs4IGAQSeCSaRnpoouctSnbCfXmuKMIB0z/Smbl8CrF+RCunyaiZpcrZam2dIkaWXPlxqXfHoBk10nxw6vtMgYLB1GTk1FkIL9apvDa6vd6HHcanJGl4ZJFZYuUIDEAj++1Lm+3wNny/MH8h5qYlq2PIx61FuCu45HAHTrUG01+xkupLSa4iivIgN8EjbXGf5TVnp0Qu7uLuu7cfoP7Fa+e2P+NJp8bQ2UMbnLKgB/KpFcUYrtcHtgooooCq6/OJwPUA1Y1D1GMMgk7of0NWJSYznb9D/AJUlFO6b60mBuV+tScBuVOD3qpfZjHP0qr1c2UZg8+xa5lmfavlKN4A6nOQcDjoe4q6Zf5T9aotf0eXUZY5oJ0Xy4nTy33KW3dcMOmcDseg96RmxFks9PSZYLTVGglZdyIZPMVl9Rntx/F/lUfV9H1C/0q7sWkSW3u4TEZLdwsm04zgMCvI4696hz6FqFpa3s0hkZ5I/s3lWyB1kSQgSuVAJ+6BgcYOc5HRiw1W8tbaKzEscapNiRSMMrByWAIxgMRycHGSMDtUQPEWmXSy6BPZW0ES6KWCWepKywyrsCKQ4BG5dox2zz2qh/wBmXel6jpuq6hYxfYJ9Wkv7yDSUaZLQogEPyr/MWJIH+len6Nq7Tabcz3oZPsqsbiQY2hhksoHX5Rj8x1OaQkvh6+kjMclussm4qysYXbbjdg8ZxkZ64zU8WvJlPBp/3g8V32v+VKLW4dI7Pzk2lraFQdw9mkKn8K3Gkf7UkuLk6taWMYjkKW81tIS0qdiykfLkY43Gl2WnQ2UssySTyyyDaXmk3ED0HtVlGNq+5on2uk8Z/Kqy+nwSKnXEgVeDVJcMZJMjpWuYnddByc1nvHmpzaboiraW/wBoluZNjRiTYREBljnr12rx/FWgQGs74tudKk0ue6juJTfWw8tInQ7JDuxwcY6989q3XKKfwf4xtre0tvD81pc213YoYWQpuT5Sf3h3xwc45FX2qeKLezsJ7jaWeONnAx0wOpqD4e8KvYWL3V4uby4Jdi3Ud+fcnNRL+BPPC3K7rZA0ky+qopcj6HaAfrU+RL7qBbaKk02j3VzbJNfX7j7TksSSZMM7Ek5+6VAAGBXr2maPY6YD9jjdc8ZeVnOPT5ieK85+HXnarqen3F0oBtrMSkAcAkYA/wCon616qOlc7fx2/nN9u0UUVl1FFFFAU1cp5kLqO4/Wna4aClic44+oqajAqCOhHFQ5kMVw69s5H0p2Fj0/L6V0z05y4lBjSt2fvAH6imN1d3VMXThVD0yp9qYurCC8jMd1bwXMZG0rNGGBGc459wKczXQamKjQadbwWb2rxeZE5dpBKobzCxJYt2OSTUe40KzntGtot9vE6eWwgO35NxZlHBxksckcnA5qzEh9aVvHXAp7TDSxgNyAqgcAdBS3bC80lpM9eQKizzcGrJabhq4ZpX8tM5J7VyaGO0jC4Elw3RT0X3pdo6ozzSHhRxUCK4e5Ml0//wAp+Uei9q6Z+OVv6dt7WSd2hkkwGVsvF8pUHjjPfnrWO1P4d6qSbWw8QA2Eg2sbmImaEeqsOGPp93FQNf8AizbeHPEcmnW9mt9DGoW6lSTBR8nKr2OO/vkdq9C0jWbXXNItdTsX3W9ym9Ceo5IIPuCCPwrHV9rzMiTeDzd+O9eVeJLxjDrVsjKsj2jW4z6ySxpx+BNeqg5JPavHvGVtNH4gvCYW+zSahCBJjgFRvIz9cflUkL9ehfDG2UW+oXIUYMqwLx2Vc/8Ad+lbisr8NYyvhO3lPWaWV/8ArIH6CtVWb9deJnMFFFFRoUUUUBXK7RQQNRgLBZEJDLwe/FRlVyAfMGV5+71q2Zdwxjg9aq3UxOyHp6+tb5v459Q5tfsVI+lHzDqn5GiKTKAdxwfwpwH2qsmt46ZwfQ0oGlkA9aQUwflOKKVn1pEkuBtHU0mRmQfd69+oFIUAjKnOe/rSQ0M/GO1RZXzT0lR3FbjFppwZIZItxUOCMjtkU9plsvSWQOI8DHTP4UmKNpJVRep6+w7msF4l+GmqSarda1ofiaeC+mfewmzGCR0XcnYDAwV6Cs9dZMTjnbtbTxL4Y0HxCv8A7vp0M79ph8kg/wAS4NK06ys9IsINP02BYLWEEJGpJ6nJOT1OSeaofBb+JYrO6tvFaRmeGRRFcRyKwnUjk/L6fQda0MR3tuPQVhu1IeVYoy0jBUUFnY9gOv6V5fI02vWJvpELSTXQWwiHy7mldmXP0RiPbIrVeNbgzw2mhRuVl1aUxykHBS2T5pm/5Rt/xUeBbU6vrd1qzptsLSV1s48fKHbAJH0UDHs1b3Iknk3Gjaeml6Xa2Mbblt4lj3Y+9jqfzqdRRXJ3FFFFAUUUUBRRRQFR7qDzV44YdKkUHmhmqgAo/PGev1p3mpNzBuBZevf3qKjdj+FdJdcrzjuTXQaOK4etGQzcqfQ/14pLRgkspIbuR3ocblI9aEfIyevQ/WquktG2Oo/KmTEScZGeuKks2RTMMMdvEcFiTy7ucs3uTTWbNKt7eeONpI1Ry3YnBxUS5umWXyponjcjgMOv49DT89yg+ZGA7Aqef0qrv7l5AA8hfbyu7HFYX1ITNKGIUHk09GyxRlmOAOpqBaqzSb2/CrXTbY3l4M58iDDMf4m7L/n+Vak/az7txg7zT/Et14wmvl0SWSNyLSNJyUVbcH5ssMj5jk8H2r0/QNLj0fSLawiAIhTBYDG5jyx/PNWIGBXaxbrvOcFFFFRoUUUUBRRRQFFFFAUUUUAaiXFqWO6LAPpUuinxLNVDpIhy4dT6joaUkkb/AHXBIq0xSHiR/vID+Fa8mPBBwe3NNkbST0z1qa9ov7hZT7VHlt5gOAHHt1qyxm84aam5JWjid05ZQSOK4XKtsbIb0NJ34rTO4p729Sch9iK4OSyDG761HiJuG77R+tSptLjMu5CduemeBUm2t9hCou4ntUxna5DbsdsUQzI3A9q0djapaQLEnQck9ye5pqwsxApZ8GVup9B6VNrPV307fz4z2KKKKy6CiiigKKKKAooooCiiigKKKKAooooCiiigK4aKKBDorjDqGHoRmq3UraOKBpotysOwPFFFWX2x/STFVZzPPOsbnAPpWjt7eOBf2a8nqx6miitdOf8AKHxXaKKw7iiiigKKKKAooooCiiig/9k=",
+    "cart": [
+      { "itemId": "6556", "quantity": 20 },
+      { "itemId": "6247", "quantity": 7 }
+    ]
   },
+
   {
-    "name": "Bowflex",
-    "url": "http://www.bowflex.com/",
-    "country": "United States",
-    "_id": 11385
-  },
-  {
-    "name": "Casio",
-    "url": "http://www.casio.com",
-    "country": "Japan",
-    "_id": 13334
-  },
-  {
-    "name": "Coleman",
-    "url": "http://www.coleman.com/",
-    "country": "United States",
-    "_id": 18159
-  },
-  {
-    "name": "Ekho",
-    "url": "http://www.ekho.us/",
-    "country": "United States",
-    "_id": 17748
-  },
-  {
-    "name": "Fitbit",
-    "url": "http://www.fitbit.com/",
-    "country": "United States",
-    "_id": 10759
-  },
-  {
-    "name": "Mota",
-    "url": "https://www.mota.com/",
-    "country": "United States",
-    "_id": 19787
-  },
-  {
-    "name": "Garmin",
-    "url": "http://www.garmin.com/",
-    "country": "United States",
-    "_id": 10713
-  },
-  {
-    "name": "Golf Buddy",
-    "url": "http://www.golfbuddyglobal.com/",
-    "country": "United States",
-    "_id": 16478
-  },
-  {
-    "name": "Jawbone",
-    "url": "https://www.jawbone.com/",
-    "country": "United States",
-    "_id": 18834
-  },
-  {
-    "name": "Lifetrak",
-    "url": "http://lifetrakusa.com/",
-    "country": "United States",
-    "_id": 13305
-  },
-  {
-    "name": "Magellan",
-    "url": "http://www.magellangps.com/",
-    "country": "Taiwan",
-    "_id": 16475
-  },
-  {
-    "name": "Martian",
-    "url": "http://www.martianwatches.com",
-    "country": "United States",
-    "_id": 18112
-  },
-  {
-    "name": "Mio",
-    "url": "http://www.mioglobal.com/",
-    "country": "Canada",
-    "_id": 17422
-  },
-  {
-    "name": "Misfit",
-    "url": "http://misfit.com/",
-    "country": "United States",
-    "_id": 11932
-  },
-  {
-    "name": "Suunto",
-    "url": "http://www.suunto.com/",
-    "country": "Finland",
-    "_id": 14902
-  },
-  {
-    "name": "Polar",
-    "url": "http://www.polar.com/",
-    "country": "United States",
-    "_id": 11837
-  },
-  {
-    "name": "Pov",
-    "url": "https://vio-pov.com/",
-    "country": "United States",
-    "_id": 19080
-  },
-  {
-    "name": "Samsung",
-    "url": "http://www.samsung.com/",
-    "country": "South Korea",
-    "_id": 18432
-  },
-  {
-    "name": "Scosche",
-    "url": "http://www.scosche.com/",
-    "country": "United States",
-    "_id": 18287
-  },
-  {
-    "name": "Smarthealth",
-    "url": "http://smarthealthusa.com/",
-    "country": "United States",
-    "_id": 14897
-  },
-  {
-    "name": "Sportline",
-    "url": "http://www.sportline.com/",
-    "country": "United States",
-    "_id": 12911
-  },
-  {
-    "name": "Tomtom",
-    "url": "http://www.tomtom.com/",
-    "country": "Netherlands",
-    "_id": 18324
-  },
-  {
-    "name": "Xtreme Cables",
-    "url": "http://www.xtremecables.net/",
-    "country": "United States",
-    "_id": 16194
-  },
-  {
-    "name": "Yoo",
-    "url": "http://www.yoochallenge.com/",
-    "country": "United States",
-    "_id": 11008
-  },
-  {
-    "name": "Talk Trac",
-    "url": "http://www.talktrac.com/",
-    "country": "United States",
-    "_id": 13456
-  },
-  {
-    "name": "180s",
-    "url": "http://www.180s.com/",
-    "country": "United States",
-    "_id": 14282
-  },
-  {
-    "name": "Ablenet",
-    "url": "http://www.ablenetinc.com/",
-    "country": "United States",
-    "_id": 18296
-  },
-  {
-    "name": "Accusplit",
-    "url": "http://www.accusplit.com/",
-    "country": "United States",
-    "_id": 16804
-  },
-  {
-    "name": "Adafruit Industries",
-    "url": "http://www.adafruit.com/",
-    "country": "United States",
-    "_id": 11455
-  },
-  {
-    "name": "Nike",
-    "url": "http://www.nike.com/",
-    "country": "United States",
-    "_id": 11939
-  },
-  {
-    "name": "Archos",
-    "url": "http://www.archos.com/us/",
-    "country": "France",
-    "_id": 16530
-  },
-  {
-    "name": "Cogito",
-    "url": "http://cogitowatch.com/",
-    "country": "China",
-    "_id": 14939
-  },
-  {
-    "name": "Dorcy",
-    "url": "http://www.dorcy.com/",
-    "country": "United States",
-    "_id": 17754
-  },
-  {
-    "name": "Ematic",
-    "url": "http://www.ematic.us/",
-    "country": "United States",
-    "_id": 17945
-  },
-  {
-    "name": "Fabrication Enterprises",
-    "url": "http://www.fab-ent.com/",
-    "country": "United States",
-    "_id": 17876
-  },
-  {
-    "name": "Freehand",
-    "url": "http://www.freehands.com/",
-    "country": "United States",
-    "_id": 11864
-  },
-  {
-    "name": "Gerbing",
-    "url": "http://gerbing.com/",
-    "country": "United States",
-    "_id": 13220
-  },
-  {
-    "name": "Gofit",
-    "url": "http://www.gofit.net/",
-    "country": "United States",
-    "_id": 17227
-  },
-  {
-    "name": "Hoodiebuddie",
-    "url": "http://www.hoodiebuddie.com/",
-    "country": "United States",
-    "_id": 11194
-  },
-  {
-    "name": "Healthsmart",
-    "url": "http://www.healthsmart.com/",
-    "country": "United States",
-    "_id": 15643
-  },
-  {
-    "name": "High Tech Pet",
-    "url": "http://www.hitecpet.com/",
-    "country": "United States",
-    "_id": 14834
-  },
-  {
-    "name": "Geopalz",
-    "url": "http://geopalz.com/",
-    "country": "United States",
-    "_id": 13411
-  },
-  {
-    "name": "Ifit",
-    "url": "https://www.ifit.com/",
-    "country": "Taiwan",
-    "_id": 11979
-  },
-  {
-    "name": "Ik Multimedia",
-    "url": "http://www.ikmultimedia.com/",
-    "country": "Italy",
-    "_id": 12143
-  },
-  {
-    "name": "Impact Sports Technologies",
-    "url": "http://www.impactsports.com/",
-    "country": "United States",
-    "_id": 12546
-  },
-  {
-    "name": "Insten",
-    "url": "http://insten.com/",
-    "country": "United States",
-    "_id": 11178
-  },
-  {
-    "name": "Ion",
-    "url": "http://usa.ioncamera.com/",
-    "country": "United States",
-    "_id": 16000
-  },
-  {
-    "name": "Iriveron",
-    "url": "http://www.iriverinc.com/",
-    "country": "United States",
-    "_id": 16308
-  },
-  {
-    "name": "Lg",
-    "url": "http://www.lg.com",
-    "country": "South Korea",
-    "_id": 18732
-  },
-  {
-    "name": "Liquid Image",
-    "url": "http://www.liquidimageco.com/",
-    "country": "United States",
-    "_id": 12760
-  },
-  {
-    "name": "Ourcaste",
-    "url": "http://ourcaste.com/",
-    "country": "United States",
-    "_id": 14626
-  },
-  {
-    "name": "Meta",
-    "url": "http://meta.watch/",
-    "country": "Finland",
-    "_id": 10175
-  },
-  {
-    "name": "Midland",
-    "url": "https://midlandusa.com",
-    "country": "United States",
-    "_id": 17316
-  },
-  {
-    "name": "Monoprice",
-    "url": "http://www.monoprice.com/",
-    "country": "United States",
-    "_id": 16459
-  },
-  {
-    "name": "Motorola",
-    "url": "http://www.motorola.com",
-    "country": "United States",
-    "_id": 16542
-  },
-  {
-    "name": "Omron",
-    "url": "http://www.omron.com/",
-    "country": "Japan",
-    "_id": 14946
-  },
-  {
-    "name": "Onanoff",
-    "url": "http://www.onanoff.com/",
-    "country": "United States",
-    "_id": 19103
-  },
-  {
-    "name": "Papago",
-    "url": "http://us.papagoinc.com/",
-    "country": "Taiwan",
-    "_id": 14604
-  },
-  {
-    "name": "Pebble",
-    "url": "http://www.getpebble.com",
-    "country": "United States",
-    "_id": 14488
+    "_id": "third_user3@email.com",
+    "firstName": "Third",
+    "lastName": "User3",
+    "email": "third_user3@email.com",
+    "phoneNumber": "4152394523",
+    "address": "575 Mackay Street, Montréal, QC, H3A 5B7, Canada",
+    "userAvatar": "data:image/jpeg;base64,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",
+    "cart": [
+      { "itemId": "6557", "quantity": 3 },
+      { "itemId": "6248", "quantity": 5 }
+    ]
   }
+
 ]

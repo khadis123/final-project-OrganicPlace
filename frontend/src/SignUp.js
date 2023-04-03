@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-const UserProfile = () => {
-
+const SignUp = () => {
+ 
     const [formData, setFormData] = useState({});
 
       //onSubmit handler
@@ -58,9 +57,9 @@ const UserProfile = () => {
     return (
 
     <>
-    <WrapperCheckout>
+    <WrapperSignUp>
       <>
-      <StyledPageH1>User Profile</StyledPageH1>
+      <StyledPageH1>Sign Up</StyledPageH1>
         <StyledSubDivForCard>
           <StyledDivForFormContent>
             <SectionContact>Contact Information</SectionContact>
@@ -195,18 +194,18 @@ const UserProfile = () => {
 
         </StyledRightColumn>
       </>
-    </WrapperCheckout>
+    </WrapperSignUp>
     </>
     )
 }
 
-export default UserProfile;
+export default SignUp;
 
 const StyledPageH1 = styled.h1`
   margin: 30px;
   text-align: center;
 `;
-const WrapperCheckout = styled.div`
+const WrapperSignUp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -26,8 +26,10 @@ express()
 //   .get("/getItem/:_id", getItem)
 //   .get("/getItems/:category", getItemsByCategory)
 
-//   .get("/companies", getUsers)
-//   .get("/companies/:_id", getUser)
+//   .get("/users", getUsers)
+//   .get("/users/:_id", getUser)
+
+//   .post("/users/:_id/additemasseller", addItemsAsSeller)
 
 //   .get("/cart", getCart)
 

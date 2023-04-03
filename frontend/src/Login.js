@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-const UserProfile = () => {
+const Login = () => {
 
     const [formData, setFormData] = useState({});
 
@@ -60,7 +59,7 @@ const UserProfile = () => {
     <>
     <WrapperCheckout>
       <>
-      <StyledPageH1>User Profile</StyledPageH1>
+      <StyledPageH1>Login</StyledPageH1>
         <StyledSubDivForCard>
           <StyledDivForFormContent>
             <SectionContact>Contact Information</SectionContact>
@@ -200,7 +199,7 @@ const UserProfile = () => {
     )
 }
 
-export default UserProfile;
+export default Login;
 
 const StyledPageH1 = styled.h1`
   margin: 30px;
@@ -208,7 +207,7 @@ const StyledPageH1 = styled.h1`
 `;
 const WrapperCheckout = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding-bottom: 50px;
 `;
