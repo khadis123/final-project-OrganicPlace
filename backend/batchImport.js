@@ -34,7 +34,7 @@ const batchImport = async () => {
     await client.connect();
     const db = client.db("organicPlace");
   
-    // await db.collection("users").insertMany(users);
+    await db.collection("users").insertMany(users);
     await db.collection("items").insertMany(items);
   
     client.close();

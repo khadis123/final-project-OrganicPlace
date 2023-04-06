@@ -1,6 +1,24 @@
 const express = require("express");
 const morgan = require("morgan");
 
+const {
+  addUser,
+  userLoginHandler,
+  addProductAsSeller,
+  // getItems,
+  // getItem,
+  // getItemsByCategory,
+  // getCompanies,
+  // getCompany,
+  // getCart,
+  // getOrder,
+  // addCart,
+  // updateCart,
+  // confirmOrder,
+  // deleteItem,
+  // deleteCart,
+} = require("./handlers");
+
 express()
   .use(function (req, res, next) {
     res.header(
@@ -29,8 +47,14 @@ express()
 //   .get("/users", getUsers)
 //   .get("/users/:_id", getUser)
 
-//   .post("/users/:_id/additemasseller", addItemsAsSeller)
+// POST endpoint for user to add product to sell as a seller
+  .post("/users/additemasseller", addProductAsSeller)
 
+// POST endpoint for adding a new user through SingUp
+  .post("/user", addUser)
+
+  // Post endpoint for user login functionality 
+  .post("/user/login", userLoginHandler)
 //   .get("/cart", getCart)
 
 //   .get("/confirmation/:orderId", getOrder)
@@ -40,9 +64,11 @@ express()
 
 //   .post("/confirmation", confirmOrder)
 
+
 //   .delete("/delete-item/:_id", deleteItem)
 //   .delete("/delete-cart", deleteCart)
 
 
   /*********************************************************/
   .listen(8050, () => console.info(`Listening on port 8050`));
+

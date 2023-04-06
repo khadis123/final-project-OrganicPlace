@@ -2,43 +2,46 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../src/CurrentUserContext"
+
 
 const Login = () => {
-
+ 
     const [formData, setFormData] = useState({});
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
+
 
       //onSubmit handler
-  //When the user clicks on "Place your order", we're fetching the confirmation in order to POST it to the confirmation page, where the user will be navigated
-  //We also set the CountItem to null because he just ordered, so we want an empty cart.
+  //When the user clicks on "Sign up", the data goes to server and mongo db 
   const handleClick = (e) => {
     e.preventDefault();
 
-    fetch("/confirmation", {
+    fetch("/user/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      // fname, lname, phone, address, email, price, and item.
+      // From user input: email and password.
       body: JSON.stringify({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        address: formData.address,
         email: formData.email,
-        apartment: formData.apartment,
-        city: formData.city,
-        province: formData.province,
-        postalCode: formData.postalcode,
-        country: formData.country,
-        phone: formData.phone,
+        password: formData.password,
+        _id: formData.email
       }),
     })
       //sends the data to the server
       .then((res) => res.json())
       //receives the data back from the server
       .then((data) => {
-        // setCountItem(null);
-        // navigate(`/confirmation/${data.orderId}`);
+        console.log(data)
+        setUser(data.user);
+        // after pressing Sign Up button navigates the user to the Homepage
+        if (data.status === 200) {
+           navigate(`/`); 
+        }
+        
       })
       .catch((error) => {
         console.log(error);
@@ -57,134 +60,48 @@ const Login = () => {
     return (
 
     <>
-    <WrapperCheckout>
+    <WrapperSignUp>
       <>
       <StyledPageH1>Login</StyledPageH1>
         <StyledSubDivForCard>
-          <StyledDivForFormContent>
-            <SectionContact>Contact Information</SectionContact>
+          <StyledDivForFormContent onSubmit={handleClick}>
+            <SectionContact>Email</SectionContact>
             <StyledRowsForForm>
+
               <div>
                 <label htmlFor="email"></label>
                 <StyledInput
                   placeholder="Email"
-                  type="text"
+                  type="email"
                   id="email"
                   onChange={handleChange}
                   required
                 />
               </div>
+
             </StyledRowsForForm>
-            <SectionShip>Your Address (for shipping and pickup)</SectionShip>
+            <SectionShip>Password</SectionShip>
             <StyledRowsForForm>
-              <div>
-                <label htmlFor="firstName"> </label>
+           
+            <div>
+                <label htmlFor="password"></label>
                 <StyledInput
-                  placeholder="First Name"
-                  type="text"
-                  id="firstName"
+                  placeholder="Password"
+                  type="password"
+                  id="password"
                   onChange={handleChange}
                   required
                 />
               </div>
 
-              <div>
-                <label htmlFor="lastName"></label>
-                <StyledInput
-                  placeholder="Last Name"
-                  type="text"
-                  id="lastName"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
             </StyledRowsForForm>
 
             <StyledRowsForForm>
-              <div>
-                <label htmlFor="address"></label>
-                <StyledInput
-                  placeholder="Address"
-                  type="text"
-                  id="address"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+
             </StyledRowsForForm>
 
-            <StyledRowsForForm>
-              <div>
-                <label htmlFor="apartment"></label>
-                <StyledInput
-                  placeholder="Apartment"
-                  type="text"
-                  id="apartment"
-                  onChange={handleChange}
-                />
-              </div>
-            </StyledRowsForForm>
 
-            <StyledRowsForForm>
-              <div>
-                <label htmlFor="city"></label>
-                <StyledInput
-                  placeholder="City"
-                  type="text"
-                  id="city"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="province"></label>
-                <StyledInput
-                  placeholder="Province"
-                  type="text"
-                  id="province"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="postalcode"></label>
-                <StyledInput
-                  placeholder="Postal code"
-                  type="text"
-                  id="postalcode"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </StyledRowsForForm>
-
-            <StyledRowsForForm>
-              <div>
-                <label htmlFor="country"></label>
-                <StyledInput
-                  placeholder="Country"
-                  type="text"
-                  id="country"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone"></label>
-                <StyledInput
-                  placeholder="Phone number"
-                  type="phone"
-                  id="phone"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </StyledRowsForForm>
-
-            <StyledCartLink to="/cart">Back to cart</StyledCartLink>
+            <StyledSignUpBtn type="submit">Login</StyledSignUpBtn>
           </StyledDivForFormContent>
         </StyledSubDivForCard>
       </>
@@ -194,7 +111,7 @@ const Login = () => {
 
         </StyledRightColumn>
       </>
-    </WrapperCheckout>
+    </WrapperSignUp>
     </>
     )
 }
@@ -205,9 +122,9 @@ const StyledPageH1 = styled.h1`
   margin: 30px;
   text-align: center;
 `;
-const WrapperCheckout = styled.div`
+const WrapperSignUp = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   padding-bottom: 50px;
 `;
@@ -231,7 +148,7 @@ const StyledSubDivForCard = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   border: 1px solid gray;
-  border-radius: 2px;
+  border-radius: 7px;
   padding: 24px;
   max-width: 600px;
   justify-content: center;
@@ -259,12 +176,25 @@ const StyledRightColumn = styled.div`
   margin-top: 20px;
   align-items: center;
 `;
-const StyledCartLink = styled(Link)`
+const StyledSignUpBtn = styled.button`
   margin-top: 20px;
-  text-decoration: underline;
-  font-size: 12px;
+  padding: 10px 30px;
+  border-radius: 7px;
+  width: 255px;
   cursor: pointer;
+  font-weight: bold;
+  background-color: #51AF5B;
+  text-align: center;
+
+  :hover {
+    background-color: #FFCB3C;
+  }
 `;
+
+// const Button = styled.button`
+//   margin-top: 10px;
+//   width: 250px;
+// `;
 const StyledRowsForForm = styled.div`
   display: flex;
   flex-direction: row;
@@ -273,6 +203,7 @@ const StyledRowsForForm = styled.div`
 `;
 
 const StyledInput = styled.input`
-  width: 160px;
+  width: 250px;
+  height: 30px;
   margin: 5px;
 `;

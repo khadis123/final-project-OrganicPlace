@@ -57,17 +57,17 @@ function App() {
   const [countItem, setCountItem] = useState(null);
 
   //Fetching the data from the cart to see the items in the cart
-  const itemFetching = () => {
-    fetch("")
-      .then((res) => res.json())
-      .then((data) => {
-        setCountItem(data.data);
-      });
-  };
+  // const itemFetching = () => {
+  //   fetch("/cart")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCountItem(data.data);
+  //     });
+  // };
 
   //when the page renders, we're calling the itemFetching function.
   useEffect(() => {
-    itemFetching();
+    // itemFetching();
   }, []);
 
   return (
@@ -88,7 +88,7 @@ function App() {
         </main> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/cart" element={<Cart itemFetching={itemFetching} />} />
+          {/* <Route path="/cart" element={<Cart itemFetching={itemFetching} />} /> */}
           <Route path="/userprofile/:userId" element={<UserProfile />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={< Login/>} />
@@ -103,7 +103,7 @@ function App() {
           <Route path="/items" element={<Items />} />
           <Route path="/items/:_id" element={<ItemDetails />} />
           <Route path="/categories/:category" element={<Category />} />
-          <Route path="/userprofile/:userId" element={<UserProfile />} />
+          {/* <Route path="/userprofile/:userId" element={<UserProfile />} /> */}
           <Route path="/userprofile/:userId/addproduct" element={<AddItemAsSeller />}
             
           />

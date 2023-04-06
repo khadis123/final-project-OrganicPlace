@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { CgShoppingCart } from "react-icons/cg";
+import { useContext, useState } from "react";
+import { UserContext } from "../src/CurrentUserContext"
+
 
 
 const Header = () => {
+  // const [user, setUser] = useContext(user);
+  const { user, setUser } = useContext(UserContext);
+
+
   return (
     <Wrapper>
       <header>
@@ -16,7 +23,9 @@ const Header = () => {
               <Number>{}</Number>
             )}
           </HeaderCartButton>
-        <StyledLink to="/login">Login</StyledLink>
+          {!user ? <StyledLink to="/login">Login</StyledLink> 
+          : <StyledLink onClick={()=>setUser(null)} to="/">Logout</StyledLink>}
+          {user && <StyledLink to="/userprofile/:userId">Profile</StyledLink>}
         <StyledLink to="/signup">SignUp</StyledLink>
       </header>
     </Wrapper>
@@ -84,6 +93,6 @@ const Number = styled.span`
   }
 `;
 
-// --color-accent: #51AF5B;
+// --color-main: #51AF5B;
 // --color-secondary: #B3E55E;
 // --color-third-golden: #FFCB3C;

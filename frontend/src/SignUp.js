@@ -6,39 +6,39 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () => {
  
     const [formData, setFormData] = useState({});
+    const navigate = useNavigate();
 
       //onSubmit handler
-  //When the user clicks on "Place your order", we're fetching the confirmation in order to POST it to the confirmation page, where the user will be navigated
-  //We also set the CountItem to null because he just ordered, so we want an empty cart.
-  const handleClick = (e) => {
+  //When the user clicks on "Sign up", the data goes to server and mongo db 
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch("/confirmation", {
+console.log("Submitt btn clicked");
+console.log(formData);
+    fetch("/user", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      // fname, lname, phone, address, email, price, and item.
+      // From user input: fname, lname, phone, address, email, price, etc.
       body: JSON.stringify({
         firstName: formData.firstName,
         lastName: formData.lastName,
-        address: formData.address,
         email: formData.email,
-        apartment: formData.apartment,
-        city: formData.city,
-        province: formData.province,
-        postalCode: formData.postalcode,
-        country: formData.country,
-        phone: formData.phone,
+        phoneNumber: formData.phone,
+        address: formData.address,
+        userAvatar: formData.userAvatar,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+        _id: formData.email
       }),
     })
       //sends the data to the server
       .then((res) => res.json())
       //receives the data back from the server
       .then((data) => {
-        // setCountItem(null);
-        // navigate(`/confirmation/${data.orderId}`);
+        // after pressing Sign Up button navigates the user to the Homepage
+        navigate(`/login`);
       })
       .catch((error) => {
         console.log(error);
@@ -61,22 +61,11 @@ const SignUp = () => {
       <>
       <StyledPageH1>Sign Up</StyledPageH1>
         <StyledSubDivForCard>
-          <StyledDivForFormContent>
+          <StyledDivForFormContent onSubmit={handleSubmit}>
             <SectionContact>Contact Information</SectionContact>
             <StyledRowsForForm>
-              <div>
-                <label htmlFor="email"></label>
-                <StyledInput
-                  placeholder="Email"
-                  type="text"
-                  id="email"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </StyledRowsForForm>
-            <SectionShip>Your Address (for shipping and pickup)</SectionShip>
-            <StyledRowsForForm>
+
+
               <div>
                 <label htmlFor="firstName"> </label>
                 <StyledInput
@@ -98,81 +87,22 @@ const SignUp = () => {
                   required
                 />
               </div>
+
+              <div>
+                <label htmlFor="email"></label>
+                <StyledInput
+                  placeholder="Email"
+                  type="email"
+                  id="email"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
             </StyledRowsForForm>
-
+            <SectionShip>Your Address (for shipping and pickup)</SectionShip>
             <StyledRowsForForm>
-              <div>
-                <label htmlFor="address"></label>
-                <StyledInput
-                  placeholder="Address"
-                  type="text"
-                  id="address"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </StyledRowsForForm>
-
-            <StyledRowsForForm>
-              <div>
-                <label htmlFor="apartment"></label>
-                <StyledInput
-                  placeholder="Apartment"
-                  type="text"
-                  id="apartment"
-                  onChange={handleChange}
-                />
-              </div>
-            </StyledRowsForForm>
-
-            <StyledRowsForForm>
-              <div>
-                <label htmlFor="city"></label>
-                <StyledInput
-                  placeholder="City"
-                  type="text"
-                  id="city"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="province"></label>
-                <StyledInput
-                  placeholder="Province"
-                  type="text"
-                  id="province"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="postalcode"></label>
-                <StyledInput
-                  placeholder="Postal code"
-                  type="text"
-                  id="postalcode"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </StyledRowsForForm>
-
-            <StyledRowsForForm>
-              <div>
-                <label htmlFor="country"></label>
-                <StyledInput
-                  placeholder="Country"
-                  type="text"
-                  id="country"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div>
+            <div>
                 <label htmlFor="phone"></label>
                 <StyledInput
                   placeholder="Phone number"
@@ -182,9 +112,58 @@ const SignUp = () => {
                   required
                 />
               </div>
+
+              <div>
+                <label htmlFor="address"></label>
+                <StyledInput
+                  placeholder="Full Address"
+                  type="text"
+                  id="address"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="userAvatar"></label>
+                <StyledInput
+                  placeholder="User avatar img (put link)"
+                  type="text"
+                  id="userAvatar"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
             </StyledRowsForForm>
 
-            <StyledCartLink to="/cart">Back to cart</StyledCartLink>
+            <StyledRowsForForm>
+            <div>
+                <label htmlFor="password"></label>
+                <StyledInput
+                  placeholder="Password"
+                  type="password"
+                  id="password"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="confirmPassword"></label>
+                <StyledInput
+                  placeholder="Confirm Password"
+                  type="password"
+                  id="confirmPassword"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+            </StyledRowsForForm>
+
+
+            <StyledSignUpBtn >Sign Up</StyledSignUpBtn>
           </StyledDivForFormContent>
         </StyledSubDivForCard>
       </>
@@ -231,7 +210,7 @@ const StyledSubDivForCard = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   border: 1px solid gray;
-  border-radius: 2px;
+  border-radius: 7px;
   padding: 24px;
   max-width: 600px;
   justify-content: center;
@@ -259,12 +238,25 @@ const StyledRightColumn = styled.div`
   margin-top: 20px;
   align-items: center;
 `;
-const StyledCartLink = styled(Link)`
-  margin-top: 20px;
-  text-decoration: underline;
-  font-size: 12px;
+const StyledSignUpBtn = styled.button`
+  margin-top: 10px;
+  padding: 10px 30px;
+  border-radius: 7px;
+  width: 250px;
   cursor: pointer;
+  font-weight: bold;
+  background-color: #51AF5B;
+  text-align: center;
+
+  :hover {
+    background-color: #FFCB3C;
+  }
 `;
+
+// const Button = styled.button`
+//   margin-top: 10px;
+//   width: 250px;
+// `;
 const StyledRowsForForm = styled.div`
   display: flex;
   flex-direction: row;
