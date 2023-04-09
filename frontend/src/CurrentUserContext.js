@@ -6,7 +6,9 @@ import { createContext } from "react";
 export const UserContext = createContext(null);
 
 const CurrentUserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(()=>{
+    return JSON.parse(window.localStorage.getItem("user"))
+  });
   const [status, setStatus] = useState("loading");
 // console.log(currentUser);
   // useEffect(() => {

@@ -39,6 +39,8 @@ const Login = () => {
         setUser(data.user);
         // after pressing Sign Up button navigates the user to the Homepage
         if (data.status === 200) {
+            localStorage.setItem('user', JSON.stringify(data.user));
+
            navigate(`/`); 
         }
         

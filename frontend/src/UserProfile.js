@@ -2,11 +2,20 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./CurrentUserContext";
+import { useContext } from "react";
 
 const UserProfile = () => {
- 
+    const { user, setUser } = useContext(UserContext);
+console.log(user)
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
+
+    // logic/handler for ADD A PRODUCT AS SELLER button (along with useNavigate() hook)
+    const routeChange = () =>{ 
+        let path = `/userprofile/${user._id}/addproduct`; // should I change here for ${_id} or ${data._id}?
+        navigate(path);
+      }
 
       //onSubmit handler
   //When the user clicks on "Sign up", the data goes to server and mongo db 
@@ -174,7 +183,7 @@ console.log(formData);
 
       <>
         <StyledRightColumn>
-        <StyledAddNewProductBtn to="/userprofile/:userId/addproduct">ADD A PRODUCT AS SELLER</StyledAddNewProductBtn>
+        <StyledAddNewProductBtn onClick={routeChange}>ADD A PRODUCT AS SELLER</StyledAddNewProductBtn>
         </StyledRightColumn>
       </>
     </WrapperSignUp>

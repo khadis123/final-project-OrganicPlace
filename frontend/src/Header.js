@@ -9,7 +9,9 @@ import { UserContext } from "../src/CurrentUserContext"
 const Header = () => {
   // const [user, setUser] = useContext(user);
   const { user, setUser } = useContext(UserContext);
-
+if (user) {
+  console.log(user._id)
+}
 
   return (
     <Wrapper>
@@ -24,8 +26,11 @@ const Header = () => {
             )}
           </HeaderCartButton>
           {!user ? <StyledLink to="/login">Login</StyledLink> 
-          : <StyledLink onClick={()=>setUser(null)} to="/">Logout</StyledLink>}
-          {user && <StyledLink to="/userprofile/:userId">Profile</StyledLink>}
+          : <StyledLink onClick={()=>{
+            setUser(null)
+            localStorage.removeItem('user')
+          }} to="/">Logout</StyledLink>}
+          {user && <StyledLink to={`/userprofile/${user._id}`}>Profile</StyledLink>}
         <StyledLink to="/signup">SignUp</StyledLink>
       </header>
     </Wrapper>

@@ -3,12 +3,25 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { UserContext } from "./CurrentUserContext";
+import { useContext } from "react";
 
 
 const AddItemAsSeller = () => {
  const linkForEmail = useParams();
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
+    if (user) {
+    //   console.log(user._id)
+    }
+
+
+        // logic/handler for BACK TO PROFILE button (along with useNavigate() hook)
+        const routeChange = () =>{ 
+            let path = `/userprofile/${user._id}`; // should I change here for ${_id} or ${data._id}?
+            navigate(path);
+          }
 
       //onSubmit handler
   //When the user clicks on "Sign up", the data goes to server and mongo db 
@@ -22,7 +35,7 @@ console.log(formData);
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      // From user input: fname, lname, phone, address, email, price, etc.
+      // From user input: name, description, price, category, etc.
       body: JSON.stringify({
         name: formData.name,
         description: formData.description,
@@ -161,7 +174,7 @@ console.log(formData);
 
       <>
       <StyledBackToProfileSection>
-      <StyledAddNewProductBtn to={`/userprofile/:userId`}>BACK TO PROFILE</StyledAddNewProductBtn>
+      <StyledAddNewProductBtn onClick={routeChange}>BACK TO PROFILE</StyledAddNewProductBtn>
       </StyledBackToProfileSection>
       </>
 

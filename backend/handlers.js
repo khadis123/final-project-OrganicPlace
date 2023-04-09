@@ -1,5 +1,6 @@
 "use strict";
-const { uuid } = require("uuidv4");
+// const { uuid } = require("uuidv4");
+const { v4: uuidv4 } = require("uuid");
 const { MongoClient, LEGAL_TLS_SOCKET_OPTIONS, Long } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -128,7 +129,8 @@ const userLoginHandler = async (req, res) => {
 };
 
 
-// POST ADD a new product to sell 
+// POST ADDs a new product to sell to 'items' collection
+// and adds a new prodict id to the field 'productsToSell' of 'users' collection
 const addProductAsSeller = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   try {
@@ -150,26 +152,67 @@ const addProductAsSeller = async (req, res) => {
         });
     }
 
+    const itemId = uuidv4();
     const item = {
-      _id: uuid(),
+      _id: itemId,
       name: req.body.name,
       description: req.body.description,
-      price: req.body.price,
+      price: Number(req.body.price),
       category: req.body.category,
       imageSrc: req.body.imageSrc,
-      numInStock: req.body.numInStock,
-      userId: req.body.userId, //from where should come userId
+      numInStock: Number(req.body.numInStock),
+      userId: req.body.userId, 
     };
 
     const newItem = await db.collection("items").insertOne(item);
     //   await db.collection("users").insertOne(users);
     console.log(newItem);
 
+   
+//     const findMatchUserIdIn2Collections = await db
+//     .collection("users")
+
+//     // Not sure I'm doing it correctly here: 
+//     // How to search if _id in 'users' collection (which is user email) matches userId 
+//     // in 'items' collection (which is also a user email)? When a user adds a product to sell, 
+//     // in 'items' collection, I want at the same time this newly added item _id to appear in the field 'productsToSell'
+//     // in another collection caled 'users'  
+//     .findOne({ _id: req.body.userId }); 
+//   if (!findMatchUserIdIn2Collections) {
+//     return res
+//       .status(404)
+//       .json({ status: 404, message: "Unable to find such userId" });
+//   }
+
+  // adds id of a newly added product (to 'items' collection)  to 'users' collection as well (into the field 'productsToSell')
+  const addNewItemIdToUsersCollection = await db
+//   console.log(_id)
+//   console.log(userId)
+//   console.log(item._id)
+//   console.log(item.userId)
+//   console.log(user._id)
+//   console.log(req.body.userId)
+//   console.log(req.body._id)
+
+  .collection("users")
+  .updateOne({ _id: req.body.userId }, {$push: { productsToSell: itemId}}); //How to put here _id of item (not of user)?
+//   console.log(userId)
+//   console.log(data._id)
+console.log(addNewItemIdToUsersCollection)
+if (addNewItemIdToUsersCollection.modifiedCount === 0) {
+  return res
+    .status(400)
+    .json({ status: 400, message: "Error making update" });
+}
+
     res.status(200).json({
       status: 200,
       message: "New product has been successfully added",
     //   userId: req.body.email,
     });
+
+
+
   } catch (error) {
     res.status(500).json({ status: 500, message: error.message });
   }
