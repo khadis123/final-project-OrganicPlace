@@ -20,23 +20,11 @@ import SearchBar from "./SearchBar";
 import UserProfile from "./UserProfile";
 import AddItemAsSeller from "./AddItemAsSeller";
 import Profile from "./Profile";
-import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./Login";
 import SignUp from "./SignUp";
 
 function App() {
-  // const { isLoading, error, user } = useAuth0();
-  // console.log(user)
 
-  // {error && <p>Authentication error</p>}
-  // {!error && isLoading && <p>Loading</p>}
-  // {!error && !isLoading && (
-  //   <>
-  //    <LoginButton />
-  //     <LogoutButton />
-  //     <Profile />
-  //   </>
-  // )}
   // //Fetching the data from the cart to know what we have in the cart
   // const itemFetching = () => {
   //   fetch("/cart")

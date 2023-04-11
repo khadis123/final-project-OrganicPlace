@@ -5,12 +5,13 @@ const { MongoClient, LEGAL_TLS_SOCKET_OPTIONS, Long } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
 
+
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
-// POST ADD a new user
+// POST ADD a new user via SignUp
 const addUser = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   try {
@@ -165,39 +166,15 @@ const addProductAsSeller = async (req, res) => {
     };
 
     const newItem = await db.collection("items").insertOne(item);
-    //   await db.collection("users").insertOne(users);
     console.log(newItem);
-
-   
-//     const findMatchUserIdIn2Collections = await db
-//     .collection("users")
-
-//     // Not sure I'm doing it correctly here: 
-//     // How to search if _id in 'users' collection (which is user email) matches userId 
-//     // in 'items' collection (which is also a user email)? When a user adds a product to sell, 
-//     // in 'items' collection, I want at the same time this newly added item _id to appear in the field 'productsToSell'
-//     // in another collection caled 'users'  
-//     .findOne({ _id: req.body.userId }); 
-//   if (!findMatchUserIdIn2Collections) {
-//     return res
-//       .status(404)
-//       .json({ status: 404, message: "Unable to find such userId" });
-//   }
 
   // adds id of a newly added product (to 'items' collection)  to 'users' collection as well (into the field 'productsToSell')
   const addNewItemIdToUsersCollection = await db
 //   console.log(_id)
-//   console.log(userId)
-//   console.log(item._id)
-//   console.log(item.userId)
-//   console.log(user._id)
-//   console.log(req.body.userId)
-//   console.log(req.body._id)
 
   .collection("users")
   .updateOne({ _id: req.body.userId }, {$push: { productsToSell: itemId}}); //How to put here _id of item (not of user)?
 //   console.log(userId)
-//   console.log(data._id)
 console.log(addNewItemIdToUsersCollection)
 if (addNewItemIdToUsersCollection.modifiedCount === 0) {
   return res
@@ -208,7 +185,6 @@ if (addNewItemIdToUsersCollection.modifiedCount === 0) {
     res.status(200).json({
       status: 200,
       message: "New product has been successfully added",
-    //   userId: req.body.email,
     });
 
 
@@ -219,20 +195,189 @@ if (addNewItemIdToUsersCollection.modifiedCount === 0) {
   client.close();
 };
 
+// DELETE  which allows a user to delete a product he is selling.
+// Endpoint looks like below:
+// .delete("users/:userId/delete-item-as-seller/:_id", deleteProductAsSeller)
+const deleteProductAsSeller = async (req, res) => {
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      await client.connect();
+      const db = client.db("organicPlace");
+      const itemId = req.params._id;
+  
+      const deleteItemFromItemsCollection = await db
+        .collection("items")
+        .deleteOne({ _id: itemId });
+  
+      // updates/deletes 'productsToSell' field in 'users' collection
+      const deleteItemFromUsersCollection = await db.collection("users")
+      .findOne({ _id: itemId })
+      .deleteOne({ _id: itemId });
+
+  
+    //   const query1 = { _id: itemId };
+    //   const update1 = {
+    //     $set: { numInStock: findItem.numInStock + Number(req.body.quantity) },
+    //   };
+    //   const itemStockUpdate = await db
+    //     .collection("items")
+    //     .updateOne(query1, update1);
+  
+      res.status(200).json({
+        status: 200,
+        message: "Item deleted from items and users collections",
+      });
+    } catch (error) {
+      res.status(500).json({ status: 500, message: error });
+      client.close();
+    }
+    client.close();
+  };
+
+// GETs 12 items to render on Homepage
+  const getTwelveItems = async (req, res) => {
+    const { start, limit } = req.query;
+  
+    //returns only 12 results to be shown on Homepage
+    const resultsItemsLimit = Number(limit) ?? 12;
+  
+    try {
+      // creates a new client/mongo
+      const client = new MongoClient(MONGO_URI, options);
+  
+      // connect to the client
+      await client.connect();
+  
+      const db = client.db("organicPlace");
+      console.log("connected!");
+
+      const result = await db
+      .collection("items")
+      .find()
+      .skip(start - 1)
+      .limit(resultsItemsLimit)
+      .toArray();
+  
+      if (result) {
+  
+        return res.status(200).json({ status: 200, data: result.slice(0, 12) });
+      } else {
+        return res.status(404).json({ status: 404, _id, data: [] });
+      }
+    } catch (err) { // on failure/error, send
+    res.status(500).json({ status: 500, data: req.body, message: err.message });
+      console.log(err);
+    }
+    client.close();
+  };
+
+
+    //Gets a specific item based on it's _id
+    const getItem = async (req, res) => {
+        const myId = req.params._id;
+        const client = new MongoClient(MONGO_URI, options);
+        try {
+          await client.connect();
+          const db = client.db("organicPlace");
+          console.log("connected!");
+
+          const itemById = await db
+            .collection("items")
+            .findOne({ _id: myId });
+      
+          itemById
+            ? res.status(200).json({ status: 200, data: itemById })
+            : res.status(400)
+                .json({ status: 400, data: myId, message: "Item wasn't found in database" });
+        } catch (error) {
+          res.status(500).json({ status: 500, message: error });
+          client.close();
+        }
+        client.close();
+      };
+
+
+  // Gets all items
+const getItems = async (req, res) => {
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      await client.connect();
+      const db = client.db("organicPlace");
+  
+      const items = await db.collection("items").find().toArray();
+      items
+        ? res.status(200).json({ status: 200, data: items })
+        : res
+            .status(400)
+            .json({ status: 400, message: "Items not found in database" });
+    } catch (error) {
+      res.status(500).json({ status: 500, message: error });
+      client.close();
+    }
+    client.close();
+  };
+  
+
+//Gets all users
+const getUsers = async (req, res) => {
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      await client.connect();
+      const db = client.db("organicPlace");
+  
+      const allUsers = await db.collection("users").find().toArray();
+      allUsers
+        ? res.status(200).json({ status: 200, data: allUsers })
+        : res
+            .status(400)
+            .json({ status: 400, message: "Users not found in database" });
+    } catch (error) {
+      res.status(500).json({ status: 500, message: error });
+      client.close();
+    }
+    client.close();
+  };
+  
+  //Gets a single user based on _id. Endpoint looks like below:
+  //  .get("/users/:_id", getUser)
+  const getUser = async (req, res) => {
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      await client.connect();
+      const db = client.db("organicPlace");
+      const myId = req.params._id;
+      const companyById = await db
+        .collection("users")
+        .findOne({ _id: myId });
+  
+      companyById
+        ? res.status(200).json({ status: 200, data: companyById })
+        : res
+            .status(400)
+            .json({ status: 400, data: myId, message: "User not found in database" });
+    } catch (error) {
+      res.status(500).json({ status: 500, message: error });
+      client.close();
+    }
+    client.close();
+  };
+  
 
 
 module.exports = {
   addUser,
   userLoginHandler,
   addProductAsSeller,
-  // getItems,
-  // getItem,
+  deleteProductAsSeller,
+  getTwelveItems,
+  getItem,
+  getItems,
+  getUsers,
+  getUser,
+    // addItemToCart,
   // getItemsByCategory,
-  // getCompanies,
-  // getCompany,
   // getCart,
   // getOrder,
-  // addCart,
   // updateCart,
   // confirmOrder,
   // deleteItem,

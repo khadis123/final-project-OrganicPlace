@@ -71,7 +71,7 @@ console.log(formData);
     return (
 
     <>
-    <WrapperSignUp>
+    <Wrapper>
       <>
       <StyledPageH1>Seller's Product Profile</StyledPageH1>
         <StyledSubDivForCard>
@@ -186,14 +186,14 @@ console.log(formData);
         <StyledAddNewProductBtn to={`/userprofile/:userId/addproduct`}>DELETE PRODUCT</StyledAddNewProductBtn>
       </StyledSubDivForCard2>
       </>
-    </WrapperSignUp>
+    </Wrapper>
     </>
     )
 }
 
 export default AddItemAsSeller;
 
-const WrapperSignUp = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -327,11 +327,11 @@ const StyledInput = styled.input`
 `;
 
 
-const Wrapper = styled.div`
-display: flex;
-flex-wrap: nowrap;
-width: 900px;
-`
+// const Wrapper = styled.div`
+// display: flex;
+// flex-wrap: nowrap;
+// width: 900px;
+// `
 const LeftColumn = styled.div`
 width: 600px;
 `

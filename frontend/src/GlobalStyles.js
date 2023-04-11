@@ -25,7 +25,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
-    margin: 0 6vw;
+    /* margin: 0 6vw; */
+    margin: 0 80px;
+    width: 1440;
+
   }
 
   /* Set background color for entire page */

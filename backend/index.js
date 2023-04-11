@@ -5,14 +5,16 @@ const {
   addUser,
   userLoginHandler,
   addProductAsSeller,
-  // getItems,
-  // getItem,
+  deleteProductAsSeller,
+  getTwelveItems,
+  getItem,
+  getItems,
+  getUsers,
+  getUser,
+  addItemToCart,
   // getItemsByCategory,
-  // getCompanies,
-  // getCompany,
   // getCart,
   // getOrder,
-  // addCart,
   // updateCart,
   // confirmOrder,
   // deleteItem,
@@ -40,30 +42,46 @@ express()
   // add extra endpoints here 
   /*********************************************************/
 
-//   .get("/getItems", getItems)
-//   .get("/getItem/:_id", getItem)
-//   .get("/getItems/:category", getItemsByCategory)
+// POST endpoint for adding a new user through SingUp
+.post("/user", addUser)
 
-//   .get("/users", getUsers)
-//   .get("/users/:_id", getUser)
+// Post endpoint for user login functionality 
+.post("/user/login", userLoginHandler)
 
-// POST endpoint for user to add product to sell as a seller
+// POST endpoint which allows a user to add a new product to sell as a seller
   .post("/users/additemasseller", addProductAsSeller)
 
-// POST endpoint for adding a new user through SingUp
-  .post("/user", addUser)
+// DELETE endpoint which allows a user to delete a product he is selling
+.delete("users/:userId/delete-item-as-seller/:_id", deleteProductAsSeller)
 
-  // Post endpoint for user login functionality 
-  .post("/user/login", userLoginHandler)
+// GET endpoint to show 12 items to show on Homepage
+  .get("/getTwelveItems", getTwelveItems)
+
+// GETs an item based on item _id
+  .get("/getItem/:_id", getItem)
+
+// GETs all the items
+  .get("/getItems", getItems)
+
+// GETS all the users
+  .get("/users", getUsers)
+
+// GETS a single user based on _id
+  .get("/users/:_id", getUser)
+
+// POST adds item to cart
+//   .post("/add-item-to-cart", addItemToCart)
+
+
+//   .get("/getItems/:category", getItemsByCategory)
+
 //   .get("/cart", getCart)
 
 //   .get("/confirmation/:orderId", getOrder)
 
-//   .post("/add-item", addCart)
 //   .patch("/update-cart", updateCart)
 
 //   .post("/confirmation", confirmOrder)
-
 
 //   .delete("/delete-item/:_id", deleteItem)
 //   .delete("/delete-cart", deleteCart)
