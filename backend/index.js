@@ -12,8 +12,8 @@ const {
   getUsers,
   getUser,
   addItemToCart,
+  getUserCart,
   // getItemsByCategory,
-  // getCart,
   // getOrder,
   // updateCart,
   // confirmOrder,
@@ -70,12 +70,14 @@ express()
   .get("/users/:_id", getUser)
 
 // POST adds item to cart
-//   .post("/add-item-to-cart", addItemToCart)
+  .post("/add-item-to-cart", addItemToCart)
+
+// GETs the cart with all the items information based on userId
+  .get("/users/:userId/cart", getUserCart)
 
 
 //   .get("/getItems/:category", getItemsByCategory)
 
-//   .get("/cart", getCart)
 
 //   .get("/confirmation/:orderId", getOrder)
 

@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --color-main: #51AF5B;
     --color-secondary: #B3E55E;
     --color-third-golden: #FFCB3C;
+    --color-fourth-beige: #FFEDDB;
     --font-heading: 'Montserrat', 'Lora', sans-serif;
     --font-body: 'Montserrat', 'Lora', sans-serif, 'Great Vibes', cursive;
   }

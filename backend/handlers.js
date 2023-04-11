@@ -279,7 +279,7 @@ const deleteProductAsSeller = async (req, res) => {
         try {
           await client.connect();
           const db = client.db("organicPlace");
-          console.log("connected!");
+          console.log("connected item!");
 
           const itemById = await db
             .collection("items")
@@ -364,6 +364,128 @@ const getUsers = async (req, res) => {
   
 
 
+  // POST adds item to user's cart based on userId
+//   For endpoint: .post("/add-item-to-cart", addItemToCart)
+// POST add to cart
+const addItemToCart = async (req, res) => {
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      await client.connect();
+      const db = client.db("organicPlace");
+  
+    //   // this verifies that the item _id exist
+    //   const itemId = req.body._id;
+    //   const findItem = await db.collection("items").findOne({ _id: itemId });
+    //   if (!findItem) {
+    //     return res.status(400).json({ status: 400, data: "Item doesn't exist" });
+    //   }
+    //   // this verifies that the item is in stock
+    //   if (findItem.numInStock < req.body.quantity) {
+    //     return res.status(400).json({ status: 400, data: "Item is not in stock" });
+    //   }
+  
+    //   // this checks if item already exists in cart. 
+    //   //How to find itemId in 'users' collection field called 'cart'?
+    //   // 
+    //   const findCart = await db.collection("users").find().toArray();
+    //   const itemFind = findCart.find((item) => {
+    //     return item._id === itemId;
+    //   });
+  
+      // this updates quantity if item already exist in cart and updates stock as well
+    //   if (itemFind) {
+
+        const query = { _id: req.body.email };
+
+        const oldCart = await db
+        .collection("users")
+        .findOne(query);
+        console.log(oldCart)
+        console.log(req.body._id)
+        const updatedCart = [...oldCart.cart, {item: req.body._id, quantity: 1}]
+        
+        const update = {
+          $set: { cart: updatedCart },
+        };
+
+        // what to do if my data/collections structure has no 'quantity' for cart?
+        // Currently 'item' object had the field numInStock and 'user' object has the field 'cart'
+        // where will be just item ids when a user adds to cart an item? 
+        // Should I create the collection called 'cart' as we deed in a group project,
+        // but in the group project we had no registered users. But now in my case of 
+        // a marketplace, every user has the field 'cart' in 'user' object.  
+        const updateQuantity = await db
+          .collection("users")
+          .updateOne(query, update);
+  
+        // const query2 = { _id: itemId };
+        // const update2 = {
+        //   $set: { numInStock: findItem.numInStock - Number(req.body.quantity) },
+        // };
+
+        // const itemStockUpdate = await db
+        //   .collection("items")
+        //   .updateOne(query2, update2);
+  
+        return res.status(200).json({
+          status: 200,
+          message: "Cart has been updated",
+        });
+      
+  
+    //   // this adds new item to cart and updates stock
+    //   const newAddToCart = await db.collection("users").insertOne(req.body);
+  
+    //   const query1 = { _id: itemId };
+    //   const update1 = {
+    //     $set: { numInStock: findItem.numInStock - Number(req.body.quantity) },
+    //   };
+  
+    //   const itemStockUpdate = await db
+    //     .collection("items")
+    //     .updateOne(query1, update1);
+    //   ///////////////
+  
+    //   res.status(200).json({
+    //     status: 200,
+    //     message: "New item has been added to cart",
+    //   });
+    } catch (error) {
+        console.log(error.message)
+      res.status(500).json({ status: 500, message: error.message });
+    }
+    client.close();
+  };
+
+
+// GETs the cart with all the items information based on userId
+//   .get("/users/:userId/cart", getUserCart)
+
+// Get cart
+const getUserCart = async (req, res) => {
+    const client = new MongoClient(MONGO_URI, options);
+    try {
+      await client.connect();
+      const db = client.db("organicPlace");
+  
+      const result = await db.collection("users").findOne({_id: req.params.userId}).toArray();
+      if (result) {
+        return res.status(200).json({ status: 200, data: result.cart })
+      } else {
+        return res.status(404).json({ status: 404, message: "Not Found" });
+      }
+
+    //   result
+    //     ? res.status(200).json({ status: 200, data: result.cart })
+    //     : res.status(404).json({ status: 404, message: "Not Found" });
+    } catch (error) {
+      res.status(500).json({ status: 500, message: error });
+    //   client.close();
+    }
+    client.close();
+  };
+
+
 module.exports = {
   addUser,
   userLoginHandler,
@@ -374,9 +496,9 @@ module.exports = {
   getItems,
   getUsers,
   getUser,
-    // addItemToCart,
+  addItemToCart,
+  getUserCart,
   // getItemsByCategory,
-  // getCart,
   // getOrder,
   // updateCart,
   // confirmOrder,

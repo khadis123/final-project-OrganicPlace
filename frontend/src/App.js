@@ -22,59 +22,62 @@ import AddItemAsSeller from "./AddItemAsSeller";
 import Profile from "./Profile";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import { useContext } from "react";
+import { UserContext } from "./CurrentUserContext";
 
 function App() {
 
-  // //Fetching the data from the cart to know what we have in the cart
-  // const itemFetching = () => {
-  //   fetch("/cart")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setCountItem(data.data);
-  //     });
-  // };
+  const { user, setUser } = useContext(UserContext);
 
-  // //when the page render, we're calling the itemFetching function.
-  // useEffect(() => {
-  //   itemFetching();
-  // }, []);
+    // Lifted the state for the countItem to provide access to this variable in Header, Cart, ItemCard, and ItemDetails
+    const [countItem, setCountItem] = useState(null);
+  
+    const [cartItems, setCartItems] = useState([]);
+    const [loading, setLoading] = useState(false);
+  
+    // //Fetching the cart data to see what items is in the cart.
+    // const theCartFetch = () => {
+    //   if (user) {
+    //   fetch(`/users/${user._id}/cart`)
+    //     .then((res) => res.json())
+    //     .then((parsedData) => {
+    //       setCartItems(parsedData.data);
+    //       setLoading(true);
+    //     });
+    //   }
+    // };
+  // console.log(user)
+  //     //When the page renders, we're calling theCartFetch function above.
+  //     useEffect(() => {
+  //       theCartFetch();
+  //     }, []);
+  
 
-  // Lifted the state for the countItem in order to have access to this variable in Header, Cart, ItemCard, and ItemDetails
-  const [countItem, setCountItem] = useState(null);
+  // //fetches the data from the cart based on userId to know what items a user has in the cart
+  const itemFetching = () => {
+    if (user) {
+    fetch(`/users/${user._id}/cart`) 
+      .then((res) => res.json())
+      .then((data) => {
+        setCountItem(data.data);
+      });
+    }
+  };
 
-  //Fetching the data from the cart to see the items in the cart
-  // const itemFetching = () => {
-  //   fetch("/cart")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setCountItem(data.data);
-  //     });
-  // };
-
-  //when the page renders, we're calling the itemFetching function.
+  // //when the page renders, we're calling the itemFetching function.
   useEffect(() => {
-    // itemFetching();
+    itemFetching();
   }, []);
 
   return (
     <>
       <GlobalStyles />
       <BrowserRouter>
-        <Header />
-        {/* <main>
-          {error && <p>Authentication error</p>}
-          {!error && isLoading && <p>Loading</p>}
-          {!error && !isLoading && (
-            <>
-              <LoginButton />
-              <LogoutButton />
-              <Profile />
-            </>
-          )}
-        </main> */}
+        <Header cartItems={cartItems}/>
+
         <Routes>
           <Route path="/" element={<Homepage />} />
-          {/* <Route path="/cart" element={<Cart itemFetching={itemFetching} />} /> */}
+          <Route path="/users/:userId/cart" element={<Cart itemFetching={itemFetching} />} />
           <Route path="/userprofile/:userId" element={<UserProfile />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={< Login/>} />
@@ -87,7 +90,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/items" element={<Items />} />
-          <Route path="/items/:_id" element={<ItemDetails />} />
+          <Route path="/items/:_id" element={<ItemDetails itemFetching={itemFetching}/>} />
           <Route path="/categories/:category" element={<Category />} />
           {/* <Route path="/userprofile/:userId" element={<UserProfile />} /> */}
           <Route path="/userprofile/:userId/addproduct" element={<AddItemAsSeller />}

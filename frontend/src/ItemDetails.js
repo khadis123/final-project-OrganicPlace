@@ -4,15 +4,16 @@ import { useEffect, useState } from "react";
 import { TbLoader3 } from "react-icons/tb";
 
 
-//ItemDetails component that renders information about an item when the user clicks on one.
+//ItemDetails component, when pressed on ItemCard a user is lead to ItemsDetails
+// which shows item details like product name, description, etc
 const ItemDetails = ({ itemFetching }) => {
     const { _id } = useParams();
     const [product, setProduct] = useState(null);
     const [users, setUsers] = useState(null);
     const [quantity, setQuantity] = useState(null);
     const [isClicked, setIsClicked] = useState(false);
-  
-    //Fetching data according to the item._id that the user clicked on Homepage
+  const user = JSON.parse(localStorage.getItem("user"))
+    //fetches the item data according to the item._id that the user clicked on Homepage
     const productFetch = () => {
       fetch(`/getItem/${_id}`)
         .then((res) => res.json())
@@ -21,7 +22,7 @@ const ItemDetails = ({ itemFetching }) => {
         });
     };
   
-    //Fetchinig a specific item
+    //fetches a specific item
     useEffect(() => {
       fetch(`/getItem/${_id}`)
         .then((res) => res.json())
@@ -32,7 +33,8 @@ const ItemDetails = ({ itemFetching }) => {
           setProduct([data.data]);
           setQuantity(data.data.numInStock);
           const _id = data.data.userId; //insted of companyId
-  
+          
+          //fetches all the users
           fetch(`/users/${_id}`)
             .then((res) => res.json())
             .then((data) => {
@@ -62,23 +64,23 @@ const ItemDetails = ({ itemFetching }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          _id: product[0]._id,
           name: product[0].name,
+          description: product.description,
           price: product[0].price,
           category: product[0].category,
-          _id: product[0]._id,
           imageSrc: product[0].imageSrc,
           quantity: 1,
           userId: product[0].userId,
+          email: user._id
         }),
       })
         .then((res) => res.json())
         .then((data) => {
           productFetch();
-          setQuantity((current) => {
-            return current - 1;
-          });
+          
           if (data.status === 400 || data.status === 500) {
-            throw new Error("Error");
+            throw new Error(data.error);
           }
           itemFetching(); // In app.js - calling it in so that the cart icon changes the number according to the items in the cart
         })
@@ -111,9 +113,6 @@ const ItemDetails = ({ itemFetching }) => {
                         </Link>
                       );
                     })}
-                    {/* <Name>{item.name}</Name>
-                    <p>{item.price}</p>
-                    <p>{item.description}</p> */}
                     <StyledName>{item.name} {": $ "}{item.price} {"CAD"}</StyledName>
           <StyledPrice></StyledPrice>
           <StyledDesciption>{item.description}</StyledDesciption>
@@ -130,7 +129,7 @@ const ItemDetails = ({ itemFetching }) => {
                           ? "Out of stock"
                           : "Add to cart"}
                       </Button>
-                      <StyledBackLink onClick={handleBackClick}><text>&#x276E;&#x276E;&#x276E; </text> BACK TO HOMEPAGE</StyledBackLink>
+                      <StyledBackLink onClick={handleBackClick}><BackArrowSymbol>&#x276E;&#x276E;&#x276E; </BackArrowSymbol> BACK TO HOMEPAGE</StyledBackLink>
 
                     </Divider>
                   </Info>
@@ -146,6 +145,8 @@ const ItemDetails = ({ itemFetching }) => {
 
   export default ItemDetails;
   
+const BackArrowSymbol = styled.text``
+
   const Link = styled(NavLink)`
     color: #333;
     font-size: 18px;
@@ -198,15 +199,17 @@ font-size: 18px;
   const Info = styled.div`
     display: flex;
     flex-direction: column;
-    padding-right: 100px;
+    padding-right: 0px;
+    padding-left: 100px;
     justify-content: flex-end;
+    width: 500px;
 
   `;
   
   const StyledImg = styled.img`
     height: 100%;
-    width: 250px;
-    margin: 50px 150px 50px 200px;
+    width: 300px;
+    margin: 50px 70px 50px 200px;
     border-radius: 7px;
   `;
   
