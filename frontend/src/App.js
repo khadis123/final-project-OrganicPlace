@@ -35,7 +35,7 @@ function App() {
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
   
-    // //Fetching the cart data to see what items is in the cart.
+    // //Fetching the cart data to see what items are in the cart.
     // const theCartFetch = () => {
     //   if (user) {
     //   fetch(`/users/${user._id}/cart`)
@@ -60,6 +60,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setCountItem(data.data);
+        console.log(user._id)
       });
     }
   };

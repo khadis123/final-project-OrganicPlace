@@ -13,6 +13,7 @@ const ItemDetails = ({ itemFetching }) => {
     const [quantity, setQuantity] = useState(null);
     const [isClicked, setIsClicked] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"))
+
     //fetches the item data according to the item._id that the user clicked on Homepage
     const productFetch = () => {
       fetch(`/getItem/${_id}`)
@@ -34,7 +35,7 @@ const ItemDetails = ({ itemFetching }) => {
           setQuantity(data.data.numInStock);
           const _id = data.data.userId; //insted of companyId
           
-          //fetches all the users
+          //fetches a single user based on id
           fetch(`/users/${_id}`)
             .then((res) => res.json())
             .then((data) => {
@@ -129,8 +130,8 @@ const ItemDetails = ({ itemFetching }) => {
                           ? "Out of stock"
                           : "Add to cart"}
                       </Button>
-                      <StyledBackLink onClick={handleBackClick}><BackArrowSymbol>&#x276E;&#x276E;&#x276E; </BackArrowSymbol> BACK TO HOMEPAGE</StyledBackLink>
-
+                      <StyledBackLink onClick={handleBackClick}> BACK TO HOMEPAGE</StyledBackLink>
+                      {/* <BackArrowSymbol>&#x276E;&#x276E;&#x276E; </BackArrowSymbol> */}
                     </Divider>
                   </Info>
                 </Container>

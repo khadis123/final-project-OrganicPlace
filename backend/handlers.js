@@ -48,7 +48,7 @@ const addUser = async (req, res) => {
       cart: [],
       productsToSell: [],
       userPurchases: [],
-      userSales: [],
+      userSales: []
     };
 
     const newUser = await db.collection("users").insertOne(user);
@@ -162,7 +162,7 @@ const addProductAsSeller = async (req, res) => {
       category: req.body.category,
       imageSrc: req.body.imageSrc,
       numInStock: Number(req.body.numInStock),
-      userId: req.body.userId, 
+      userId: req.body.userId 
     };
 
     const newItem = await db.collection("items").insertOne(item);
@@ -459,9 +459,8 @@ const addItemToCart = async (req, res) => {
 
 
 // GETs the cart with all the items information based on userId
-//   .get("/users/:userId/cart", getUserCart)
+//  Endpoint for this handler: .get("/users/:userId/cart", getUserCart)
 
-// Get cart
 const getUserCart = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     try {

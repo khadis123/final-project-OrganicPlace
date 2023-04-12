@@ -4,6 +4,8 @@ import styled from "styled-components";
 import CartItem from "./CartItem";
 import GlobalStyles from "./GlobalStyles";
 import { FiLoader } from "react-icons/fi";
+import { TbLoader3 } from "react-icons/tb";
+
 
 //Cart component containing information about the items in the cart.
 const Cart = ({ itemFetching }) => {
@@ -41,7 +43,7 @@ const Cart = ({ itemFetching }) => {
       <GlobalStyles />
       {!loading ? (
         <LoadingIcon>
-          <FiLoader />
+          <TbLoader3 />
         </LoadingIcon>
       ) : (
         <>

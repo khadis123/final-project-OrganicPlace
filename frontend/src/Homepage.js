@@ -11,7 +11,7 @@ const Homepage = () => {
 
     //Fetching to get all the items.
     useEffect(() => {
-      fetch("/getTwelveItems")
+      fetch(`/getTwelveItems`)
         .then((res) => res.json())
         .then((data) => {
           setItems(data.data);
@@ -19,7 +19,7 @@ const Homepage = () => {
           console.log(data.data)
         })
         .catch((error) => {
-          console.log(error);
+        //   console.log(error);
         });
     }, []);
 
