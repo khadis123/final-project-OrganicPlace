@@ -79,11 +79,11 @@ express()
 //   .get("/getItems/:category", getItemsByCategory)
 
 
-//   .get("/confirmation/:orderId", getOrder)
+//   .get("/:userId/confirmation/:orderId", getOrder)
 
 //   .patch("/update-cart", updateCart)
 
-//   .post("/confirmation", confirmOrder)
+//   .post("/:userId/confirmation/:orderId", confirmOrder)
 
 //   .delete("/delete-item/:_id", deleteItem)
 //   .delete("/delete-cart", deleteCart)

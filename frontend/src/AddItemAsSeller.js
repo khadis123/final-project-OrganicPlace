@@ -182,7 +182,7 @@ console.log(formData);
       <StyledSubDivForCard2>
       <SectionH3>Here you can modify or delete your products</SectionH3>
 
-      <StyledAddNewProductBtn to={`/userprofile/:userId/addproduct`}>MODIFY PRODUCT</StyledAddNewProductBtn>
+      <StyledModifyProductBtn to={`/userprofile/:userId/addproduct`}>MODIFY PRODUCT</StyledModifyProductBtn>
         <StyledAddNewProductBtn to={`/userprofile/:userId/addproduct`}>DELETE PRODUCT</StyledAddNewProductBtn>
       </StyledSubDivForCard2>
       </>
@@ -253,7 +253,7 @@ const StyledSubDivForCard2 = styled.div`
   border: 1px solid gray;
   border-radius: 7px;
   padding: 24px;
-  max-width: 800px;
+  width: 800px;
   justify-content: center;
   background-color: ---color-main-background;
 `;
@@ -303,6 +303,23 @@ const StyledAddNewProductBtn = styled.button`
   cursor: pointer;
   font-weight: bold;
   background-color: #FFCB3C;
+  text-align: center;
+
+  :hover {
+    background-color: #FFCB3C;
+  }
+`;
+
+
+const StyledModifyProductBtn = styled.button`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  border-radius: 7px;
+  width: 300px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #B3E55E;
   text-align: center;
 
   :hover {

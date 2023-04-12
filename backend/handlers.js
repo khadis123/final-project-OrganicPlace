@@ -293,11 +293,12 @@ const deleteProductAsSeller = async (req, res) => {
             ? res.status(200).json({ status: 200, data: itemById })
             : res.status(400)
                 .json({ status: 400, data: myId, message: "Item wasn't found in database" });
+                client.close();
+
         } catch (error) {
           res.status(500).json({ status: 500, message: error });
         //   client.close();
         }
-        client.close();
       };
 
 

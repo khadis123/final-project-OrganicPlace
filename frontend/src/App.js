@@ -54,21 +54,21 @@ function App() {
   
 
   // //fetches the data from the cart based on userId to know what items a user has in the cart
-  const itemFetching = () => {
-    if (user) {
-    fetch(`/users/${user._id}/cart`) 
-      .then((res) => res.json())
-      .then((data) => {
-        setCountItem(data.data);
-        console.log(user._id)
-      });
-    }
-  };
+  // const itemFetching = () => {
+  //   if (user) {
+  //   fetch(`/users/${user._id}/cart`) 
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setCountItem(data.data);
+  //       console.log(user._id)
+  //     });
+  //   }
+  // };
 
   // //when the page renders, we're calling the itemFetching function.
-  useEffect(() => {
-    itemFetching();
-  }, []);
+  // useEffect(() => {
+  //   itemFetching();
+  // }, []);
 
   return (
     <>
@@ -78,20 +78,20 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/users/:userId/cart" element={<Cart itemFetching={itemFetching} />} />
+          <Route path="/users/:userId/cart" element={<Cart />} />
           <Route path="/userprofile/:userId" element={<UserProfile />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={< Login/>} />
           
-          <Route path="/checkout"
+          <Route path="/users/:userId/checkout"
             element={<Checkout setCountItem={setCountItem} />}
           />
-          <Route path="/confirmation/:orderId" element={<Confirmation />} />
+          <Route path="/:userId/confirmation/:orderId" element={<Confirmation />} />
 
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/items" element={<Items />} />
-          <Route path="/items/:_id" element={<ItemDetails itemFetching={itemFetching}/>} />
+          <Route path="/items/:_id" element={<ItemDetails />} />
           <Route path="/categories/:category" element={<Category />} />
           {/* <Route path="/userprofile/:userId" element={<UserProfile />} /> */}
           <Route path="/userprofile/:userId/addproduct" element={<AddItemAsSeller />}

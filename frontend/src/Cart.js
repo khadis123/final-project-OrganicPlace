@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CartItem from "./CartItem";
 import GlobalStyles from "./GlobalStyles";
-import { FiLoader } from "react-icons/fi";
 import { TbLoader3 } from "react-icons/tb";
 import { useContext } from "react";
 import { UserContext } from "./CurrentUserContext";
@@ -19,13 +18,15 @@ const Cart = ({ itemFetching }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  //Fetching the cart data to see what items is in the cart.
+  console.log("cartItems", cartItems)
+
+  //Fetching the cart data to display what items are in the cart.
   const theCartFetch = () => {
     fetch(`/users/${user._id}/cart`)
       .then((res) => res.json())
       .then((parsedData) => {
         setCartItems(parsedData.data);
-        setLoading(true);
+        // setLoading(true);
       });
   };
 
@@ -35,8 +36,10 @@ const Cart = ({ itemFetching }) => {
   }, []);
 
   //When the user clicks on "checkout", it navigates him to the /checkout page.
+  if (user) {
+  }
   const handleClick = () => {
-    navigate("/checkout");
+    navigate(`/users/${user._id}/checkout`);
   };
 
   //When the user clicks on "back", it navigates him to the previous page he was on.
@@ -47,24 +50,24 @@ const Cart = ({ itemFetching }) => {
   return (
     <Wrapper>
       <GlobalStyles />
-      {!loading ? (
-        <LoadingIcon>
+      {loading ? (
+        <StyledLoaderIcon>
           <TbLoader3 />
-        </LoadingIcon>
+        </StyledLoaderIcon>
       ) : (
         <>
           <Left>
             {cartItems.length === 0 ? (
               <p>Your shopping cart is empty</p>
             ) : (
-              <p>Your shopping cart</p>
+              <Styledh3>Your shopping cart</Styledh3>
             )}
 
             {cartItems.map((cartItem) => (
               <CartItem
                 theCartFetch={theCartFetch}
                 cartItem={cartItem}
-                // itemFetching={itemFetching}
+                itemFetching={itemFetching}
               />
             ))}
           </Left>
@@ -73,10 +76,10 @@ const Cart = ({ itemFetching }) => {
       <Right>
         <p></p>
         <ButtonsWrapper>
-          <Button onClick={handleBackClick}>Back to shopping</Button>
-          <AddToCart disabled={cartItems.length === 0} onClick={handleClick}>
+          <Button onClick={handleBackClick}>Back to HOMEPAGE</Button>
+          <StyledCheckoutBtn disabled={cartItems.length === 0} onClick={handleClick}>
             Checkout
-          </AddToCart>
+          </StyledCheckoutBtn>
         </ButtonsWrapper>
       </Right>
     </Wrapper>
@@ -87,10 +90,17 @@ export default Cart;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   padding: 25px;
   height: 100%;
+  border-radius: 7px;
 `;
+
+const Styledh3 = styled.h3`
+text-align: left;
+padding: 0 100px;
+`
 
 const Left = styled.div`
   display: flex;
@@ -100,7 +110,6 @@ const Left = styled.div`
 const Right = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -108,21 +117,27 @@ const ButtonsWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+  justify-content: flex-start;
+  padding: 10px 20px;
+
 `;
 const Button = styled.button`
   margin: 0 20px 0 0;
-  background-color: lightgray;
+  background-color: #51AF5B;
+  border-radius: 7px;
 `;
 
-const AddToCart = styled.button`
+const StyledCheckoutBtn = styled.button`
   opacity: ${(props) => props.disabled && "0.5"};
+  background-color: #FFCB3C;
 `;
-const LoadingIcon = styled(FiLoader)`
+const StyledLoaderIcon = styled(TbLoader3)`
   position: relative;
-  left: 30%;
+  left: 50%;
   top: 10px;
   animation: spin 1s infinite linear;
-  height: 50vh;
+  height: 7vh;
+  width: 7vw;
 
   @keyframes spin {
     100% {

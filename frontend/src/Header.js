@@ -40,15 +40,16 @@ const Header = ({ cartItems }) => {
         <StyledLogoLink to="/">OrganicPlace</StyledLogoLink>
       </header>
 
-      <header>
-        <HeaderCartButton>
-          {user && (<>
-                      <CgShoppingCart as={NavLink} to={`/users/${user._id}/cart`}/>
+      <header>{user && (
+        <HeaderCartButton as={NavLink} to={`/users/${user._id}/cart`}>
+          <>
+                      <CgShoppingCart />
 
             <Number>{user.cart.length}</Number>
             </>
-          )}
-        </HeaderCartButton>
+         
+        </HeaderCartButton> 
+        )}
         {!user ? (
           <StyledLink to="/login">Login</StyledLink>
         ) : (
