@@ -5,17 +5,23 @@ import CartItem from "./CartItem";
 import GlobalStyles from "./GlobalStyles";
 import { FiLoader } from "react-icons/fi";
 import { TbLoader3 } from "react-icons/tb";
+import { useContext } from "react";
+import { UserContext } from "./CurrentUserContext";
 
 
 //Cart component containing information about the items in the cart.
 const Cart = ({ itemFetching }) => {
+
+    const { user, setUser } = useContext(UserContext);
+
+
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   //Fetching the cart data to see what items is in the cart.
   const theCartFetch = () => {
-    fetch("/users/:userId/cart")
+    fetch(`/users/${user._id}/cart`)
       .then((res) => res.json())
       .then((parsedData) => {
         setCartItems(parsedData.data);

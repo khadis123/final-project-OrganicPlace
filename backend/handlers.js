@@ -241,6 +241,8 @@ const deleteProductAsSeller = async (req, res) => {
     //returns only 12 results to be shown on Homepage
     const resultsItemsLimit = Number(limit) ?? 12;
   
+
+    console.log("resultsItemsLimit: ", resultsItemsLimit)
     try {
       // creates a new client/mongo
       const client = new MongoClient(MONGO_URI, options);
@@ -258,6 +260,8 @@ const deleteProductAsSeller = async (req, res) => {
       .limit(resultsItemsLimit)
       .toArray();
   
+      console.log("result", result)
+
       if (result) {
   
         return res.status(200).json({ status: 200, data: result.slice(0, 12) });
@@ -291,7 +295,7 @@ const deleteProductAsSeller = async (req, res) => {
                 .json({ status: 400, data: myId, message: "Item wasn't found in database" });
         } catch (error) {
           res.status(500).json({ status: 500, message: error });
-          client.close();
+        //   client.close();
         }
         client.close();
       };
@@ -465,10 +469,15 @@ const getUserCart = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     try {
       await client.connect();
+      console.log("connected getUserCart")
       const db = client.db("organicPlace");
-  
-      const result = await db.collection("users").findOne({_id: req.params.userId}).toArray();
+  console.log("req.params.userId", req.params.userId)
+
+      const result = await db.collection("users").findOne({_id: req.params.userId});
+
+    //   console.log("result", result)
       if (result) {
+        
         return res.status(200).json({ status: 200, data: result.cart })
       } else {
         return res.status(404).json({ status: 404, message: "Not Found" });

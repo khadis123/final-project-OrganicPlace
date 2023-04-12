@@ -40,9 +40,9 @@ const Homepage = () => {
             
             {items.map((item) => {
               return (
-                <>
+                
                   <ItemCard key={item._id} item={item} />
-                </>
+                
               );
             })}
           </StyledItemCardsGrid>
