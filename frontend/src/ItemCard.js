@@ -32,7 +32,7 @@ const OutOfStockBtn = styled.button`
 const ItemImg = styled.img`
 display: flex;
 flex-direction: column;
-  height: 302px;
+  height: 286px;
   width: 286px;
 border-radius: 7px;
 /* border-top-right-radius: 7px;
