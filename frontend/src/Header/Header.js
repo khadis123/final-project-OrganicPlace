@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { CgShoppingCart } from "react-icons/cg";
 import { useContext, useState } from "react";
-import { UserContext } from "../src/CurrentUserContext";
+import { UserContext } from "../CurrentUserContext";
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 
