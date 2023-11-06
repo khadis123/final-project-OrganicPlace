@@ -3,7 +3,7 @@ const FollowUs = () => {
 
     return (
         <>
-        
+        Follow Us
         </>
     )
 }

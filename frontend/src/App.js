@@ -10,6 +10,9 @@ import Category from "./Category";
 import Checkout from "./Checkout";
 import Confirmation from "./Confirmation";
 import ContactUs from "./ContactUs";
+import Career from "./Footer/Career";
+import HelpCenter from "./Footer/HelpCenter";
+import Blog from "./Footer/Blog";
 import FollowUs from "./FollowUs";
 import Footer from "./Footer/Footer";
 import Homepage from "./Homepage";
@@ -90,6 +93,10 @@ function App() {
 
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/helpcenter" element={<HelpCenter />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/blog" element={<Blog />} />
+
           <Route path="/items" element={<Items />} />
           <Route path="/items/:_id" element={<ItemDetails />} />
           <Route path="/categories/:category" element={<Category />} />

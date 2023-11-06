@@ -4,7 +4,7 @@ const ContactUs = () => {
     return (
 
         <>
-        
+        Contact Us
         </>
     )
 }
