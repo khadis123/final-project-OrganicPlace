@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 import { TbLoader3 } from "react-icons/tb";
+import Categories from "./Categories";
 
 
 const Homepage = () => {
@@ -51,6 +52,7 @@ const Homepage = () => {
 
         </>
       )}
+      <Categories />
 </>
     );
 }

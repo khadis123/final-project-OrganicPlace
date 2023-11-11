@@ -156,7 +156,7 @@ const FooterHeadings = styled.h5`
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   padding-bottom: 10px;
 `;
 
@@ -174,13 +174,10 @@ const SubHeadingsNav = styled(NavLink)`
   font-family: var(--font-heading);
   font-size: 18px;
   padding: 0 0px;
-  cursor: pointer;
 
-  /* a:hover {
-    color: #444444;
-  } */
-  a:hover: {
-    color: var(--color-third-golden);
+  &:hover {
+    color: var(--color-third-golden);  
+    /* cursor: pointer; */
   }
 
   @media (max-width: 1500px) {
