@@ -45,6 +45,7 @@ const HeaderNav = styled.nav`
   flex-wrap: wrap;
   justify-content: space-around;
   background-color: #FFF5CB;
+  margin-top: 40px;
 `;
 
 const HeaderNavLink = styled.a`
